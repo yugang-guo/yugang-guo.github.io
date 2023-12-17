@@ -1,0 +1,6 @@
+[book]
+authors = ["john_gyg"]
+language = "en"
+multilingual = false
+src = "src"
+title = "GYG personal page"
