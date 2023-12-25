@@ -24,9 +24,12 @@ nav:
 ## [top]
 theme:
   name: material
+  font:
+    text: Roboto  # 常规字体
+    code: Roboto Mono  #代码块字体
   palette:
     - scheme: default # 日间模式
-      primary: indigo # 上方的
+      primary: green # 上方的
       accent: orange # 链接等可交互元件的高亮色
       toggle:
         icon: material/weather-night # 图标
@@ -46,6 +49,7 @@ theme:
     - search.highlight # 搜索出的文章关键词加入高亮
     - content.code.copy # 可以通过按钮复制代码
     - content.action.edit # 点击按钮跳转到编辑页面  需要结合 edit_uri 一起使用
+    - toc.integrate # 右侧生产目录
   language: zh # 一些提示性的文字会变成中文
   icon:
     repo: fontawesome/brands/github
