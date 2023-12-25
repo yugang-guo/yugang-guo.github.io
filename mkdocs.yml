@@ -4,6 +4,20 @@ site_url: https://yugang-guo.github.io
 site_author: 郭玉刚
 site_description: 郭玉刚的个人主页
 
+# [Navigtion]
+nav:
+  - 博客：
+  - 开发：
+    - Java: Dev/java.md
+    - 算法:
+      - 数据结构与算法: Dev/DSA.md
+      - Leetcode Hot100: Dev/Hot100.md
+    - 数据库: Dev/MySQL.md
+    - 项目:
+      - WebServer: Dev/webserver.md
+    - 工具:
+      - Git: Dev/git.md
+
 # [UI]
 ## [top]
 theme:
@@ -43,8 +57,41 @@ copyright: 郭玉刚 CC-BY-4.0 # 左下角的版权声明
 extra:
   social: # icons
     - icon: fontawesome/brands/bilibili
-      link: https://space.bilibili.com/24502827
-      name: Bilibili | 杨希杰619 # 鼠标悬浮提示
+      link: https://space.bilibili.com/384189219
+      name: bilibili | Terry-gyg # 鼠标悬浮提示
     - icon: fontawesome/brands/github
-      link: https://github.com/Yang-Xijie
-      name: GitHub | Yang-Xijie
+      link: https://github.com/yugang-guo
+      name: GitHub | Terry
+
+# [Extensions]
+plugins:
+  - search: # 现在还不支持中文搜索 支持之后可以设置语言
+    # insider已经支持中文的分词搜索了 https://squidfunk.github.io/mkdocs-material/blog/2022/chinese-search-support/
+      lang:
+        - en
+        - ja
+  - tags # 给单篇文章添加标签 https://squidfunk.github.io/mkdocs-material/setup/setting-up-tags/?h=tags
+markdown_extensions:
+  - pymdownx.arithmatex: # 数学公式支持
+      generic: true
+  - attr_list # 给图片后面添加{width="300"}设置大小
+  - toc:
+      permalink: true # 固定标题位置为当前位置
+  - pymdownx.highlight: # 代码块高亮
+      # linenums: true # 显示行号
+      # auto_title: true # 显示编程语言名称
+  - pymdownx.superfences # 代码块高亮插件
+  - meta # 支持Markdown文件上方自定义标题标签等
+  - admonition # https://squidfunk.github.io/mkdocs-material/reference/admonitions/#inline-blocks
+  - pymdownx.details # admonition需要
+
+extra_javascript:
+  # 数学公式支持
+  # https://squidfunk.github.io/mkdocs-material/reference/math/#katex
+  - mkdocs/javascripts/katex.js
+  - https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/katex.min.js  
+  - https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/contrib/auto-render.min.js
+extra_css:
+  - https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/katex.min.css
+  - mkdocs/css/no-footer.css # 不使用底部的翻页
+  - mkdocs/css/unordered-list-symbols.css # multiplt unordered list symbols
