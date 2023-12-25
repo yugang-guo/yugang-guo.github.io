@@ -6,8 +6,8 @@ site_description: 郭玉刚的个人主页
 
 # [Navigtion]
 nav:
-  - 博客：
-  - 开发：
+  - 博客:
+  - 开发:
     - Java: Dev/java.md
     - 算法:
       - 数据结构与算法: Dev/DSA.md
