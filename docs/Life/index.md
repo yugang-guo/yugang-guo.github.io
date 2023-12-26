@@ -21,7 +21,7 @@
 ![IMG_4388](./assets/IMG_4388.jpg)
 
 - 2023.11.29 被带上星空的愿望
-<img src="./assets/IMG_4569.jpg" alt="可爱的猫" style="zoom: 50%;" />
+<img src="./assets/IMG_4569.JPG" alt="硕士毕业" style="zoom: 50%;" />
 
 
 - 2023.12.04 食堂的猫
