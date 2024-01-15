@@ -1,11 +1,11 @@
 # 开发
 
-- [Java](Dev/java.md)
+- [Java](java.md)
 - 算法:
-    - [数据结构与算法](Dev/DSA.md)
-    - [Leetcode Hot100](Dev/Hot100.md)
-- [数据库](Dev/MySQL.md)
+    - [数据结构与算法](DSA.md)
+    - [Leetcode Hot100](Hot100.md)
+- [数据库](MySQL.md)
 - 项目:
-    - [WebServer](Dev/webserver.md)
+    - [WebServer](webserver.md)
 - 工具:
-    - [Git](Dev/git.md)
+    - [Git](git.md)
