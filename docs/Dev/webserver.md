@@ -1,13 +1,15 @@
-# 1. 系统编程入门
+# WebServer项目笔记
 
-## 程序流程
+## 1. 系统编程入门
+
+### 程序流程
 
 1. 预处理：生成预处理后的源代码(.i)，头文件展开、宏替换、删除注释。命令：-E
 2. 编译：生成汇编代码(.s)。命令：-S
 3. 汇编：生成目标代码(.o)。命令：-c
 4. 链接：生成可执行程序(.exe .out)，将目标代码、库代码等链接在一起。命令：-o
 
-## GCC选项参数
+### GCC选项参数
 
 1. -E 预处理、-S 编译、-c 汇编、-o 链接
 2. -I：指定include包含文件的搜索目录
@@ -22,13 +24,13 @@
 11. -shared：生成共享目标文件，通常用于建立动态库
 12. -std：指定C方言，如-std=c99
 
-## 库
+### 库
 
 静态库：在链接阶段被复制到程序中
 
 动态库（共享库）：在程序运行时，由系统动态加载到内存
 
-### 静态库
+#### 静态库
 
 **命名**
 
@@ -46,7 +48,7 @@ Windows：libxxx.lib
 ar rcs libxxx.a xxx.o xxx.o
 ```
 
-### 动态库
+#### 动态库
 
 **命名**
 
@@ -72,7 +74,7 @@ gcc -shared xxx.o xxx.o -o libxxx.so
 
 ldd命令：检查动态库的依赖关系
 
-## makefile
+### makefile
 
 **规则**
 
@@ -134,7 +136,7 @@ clean:
 	rm -f *.o $(TARGET)
 ```
 
-## CMake
+### CMake
 
 **使用**
 ```shell
@@ -160,15 +162,15 @@ include_directories(include)
 add_executable(out main.cpp head.cpp)
 ```
 
-## I/O
+### I/O
 
-### 文件指针
+#### 文件指针
 
 FILE* fp fopen()
 
 fp为结构体指针，包含三部分：文件描述符（int fd）、文件读写指针、I/O缓冲区（内存地址）
 
-### I/O函数
+#### I/O函数
 
 ```cpp
 /* 打开文件
@@ -233,7 +235,7 @@ int stat(const char* pathname, struct stat* statbuf);
 int lstat(const char* pathname, struct stat* statbuf);
 ```
 
-### 文件属性函数
+#### 文件属性函数
 
 ```cpp
 /* 判断文件是否有某个权限 / 判断文件是否存在
@@ -265,7 +267,7 @@ return：
 int truncate(const char* path, off_t length);
 ```
 
-### 目录函数
+#### 目录函数
 
 ```cpp
 /* 创建目录
@@ -325,7 +327,7 @@ return：
 int closedir(DIR* dirp);
 ```
 
-### 文件描述符函数
+#### 文件描述符函数
 
 ```cpp
 /* 创建文件描述符，指向oldfd
@@ -346,7 +348,7 @@ cmd：
 int fcntl(int fd, int cmd, ...);
 ```
 
-### 其他函数
+#### 其他函数
 
 ```cpp
 /* 将内存块的前 n 个字节清零
@@ -374,7 +376,7 @@ void* memcpy(void* dest, void* src, size_t n);
 void assert(int expression);
 ```
 
-## Shell命令
+### Shell命令
 
 ```shell
 1. cd
@@ -391,16 +393,16 @@ void assert(int expression);
 11. cp -i Filename Dirroot
 ```
 
-# 2. 多进程
+## 2. 多进程
 
-## 进程
+### 进程
 
 进程是正在运行的程序的实例，是资源分配的基本单元，是执行的基本单元
 
 - 并行：多条指令同时执行
 - 并发：同一时刻只有一条指令执行，多条指令轮换执行，在宏观上达到并行的效果
 
-## PCB进程控制块
+### PCB进程控制块
 
 1. 进程id
 2. 进程状态：阻塞、就绪、运行、挂起
@@ -414,9 +416,9 @@ void assert(int expression);
 10. 用户id、组id
 11. 会话、进程组
 
-## 进程状态
+### 进程状态
 
-### 三态模型
+#### 三态模型
 
 ![三态模型](assets/webserver/7-进程三个基本状态-1163923.jpg)
 
@@ -424,14 +426,14 @@ void assert(int expression);
 就绪态：具备运行条件，进程已获得除CPU以外的资源
 阻塞态：不具备运行条件，正在等待某个事件的完成
 
-### 五态模型
+#### 五态模型
 
 ![五态模型](assets/webserver/8-进程五个状态.jpg.webp)
 
 新建态：进程被创建，未进入就绪队列
 终止态：进程运行结束或出错
 
-### 七态模型
+#### 七态模型
 
 ![七态模型](assets/webserver/10-进程七中状态.jpg.webp)
 
@@ -446,7 +448,7 @@ void assert(int expression);
 - 操作系统需要
 - 负荷调节需要
 
-## 进程命令
+### 进程命令
 
 ```shell
 # 查看进程的快照
@@ -464,7 +466,7 @@ kill -9 pid # 强制杀死进程
 killall name
 ```
 
-## PID
+### PID
 
 进程号 PID，类型为 pid_t（整型）
 
@@ -483,7 +485,7 @@ pid_t getppid()；
 pid_t getpgid(pid_t pid)；
 ```
 
-## 进程创建
+### 进程创建
 
 ```cpp
 // 创建子进程
@@ -527,7 +529,7 @@ arg：可执行文件的参数列表
 return：失败返回 -1，成功无返回值
 ```
 
-## 进程退出
+### 进程退出
 
 ```cpp
 // 标准C库函数
@@ -537,13 +539,13 @@ void exit(int status);
 void _exit(int status);
 ```
 
-### 孤儿进程
+#### 孤儿进程
 
 父进程运行结束，子进程还在运行，则子进程为**孤儿进程**
 
 由于子进程结束时，父进程需回收资源。因此，当出现孤儿进程时，内核会将孤儿进程的父进程设置为 init 进程（PID = 1），而 init 进程会对其子进程循环地调用 `wait()`，进行资源回收。因此孤儿进程不会产生危害
 
-### 僵尸进程
+#### 僵尸进程
 
 每个进程结束后，会释放用户区的数据，内核区中的 PCB 则需要父进程回收释放
 
@@ -553,7 +555,7 @@ void _exit(int status);
 
 如果父进程未调用 wait()、waitpid()，则子进程的资源不会释放，其进程号被占用。由于系统的进程号有限，若存在大量的僵尸进程，会导致没有可用的进程号无法创建进程的情况发生。
 
-## 进程回收
+### 进程回收
 
 进程退出时，内核会回收资源，但 PCB 信息仍需父进程进行回收
 
@@ -582,7 +584,7 @@ pid_t waitpid(pid_t pid, int* wstatus, int options);
 - waitpid：默认阻塞，可设置非阻塞，可指定子进程的pid
 - 两者一次只能清理一个子进程
 
-## 进程间通信（IPC）
+### 进程间通信（IPC）
 
 **目的**
 
@@ -605,7 +607,7 @@ pid_t waitpid(pid_t pid, int* wstatus, int options);
 不同主机
 * Socket
 
-### 匿名管道
+#### 匿名管道
 
 管道本质是内核在内存中的维护的缓冲区，管道具有文件的属性：读、写，但匿名管道没有文件实体，可以按照操作文件的方式来操作管道。
 
@@ -638,7 +640,7 @@ int pipe(int pipefd[2]);
 	- 管道已满，write阻塞
 	- 管道没有满，write将数据写入，并返回实际写入的字节数
 
-### 有名管道（FIFO）
+#### 有名管道（FIFO）
 
 不同于匿名管道，有名管道具有文件实体，以 FIFO 文件形式存放文件系统。即使与 FIFO 的创建进程不具有亲缘关系的进程也可以通过访问路径，进行进程间的通信。
 
@@ -676,7 +678,7 @@ FIFO 严格遵循先进先出原则，因此不支持 `lseek()` 文件定位操�
 	- 管道已经满了，write会阻塞
 	- 管道没有满，write将数据写入，并返回实际写入的字节数。
 
-### 内存映射
+#### 内存映射
 
 内存映射：将磁盘文件的数据映射到内存，用户通过修改内存就能修改磁盘文件
 
@@ -727,7 +729,7 @@ int munmap(void* addr, size_t lenght);
 
 mmap() 的参数 flags 设置为 MAP_ANONYMOUS，则 mmap() 忽略 fd，一般将 fd 设置为 -1
 
-### 信号
+#### 信号
 
 信号是事件发生时对进程的通知机制（软件中断），是一种异步通信的方式。
 
@@ -898,7 +900,7 @@ int sigpending(sigset_t *set);
 
 使用 SIGCHLD 信号，可以解决僵尸进程问题
 
-### 共享内存
+#### 共享内存
 
 共享内存：允许多个进程共享物理内存的同一块区域。共享内存段位于进程用户空间，因此 IPC 无需内核介入。
 
@@ -994,7 +996,7 @@ key_t ftok(const char *pathname, int proj_id);
 	- 内存映射区：进程退出，内存映射区销毁
 	- 共享内存：进程退出，共享内存还在，标记删除（所有的关联的进程数为0），或者关机。如果一个进程退出，会自动和共享内存进行取消关联。
 
-## 守护进程
+### 守护进程
 
 **控制终端**
 
@@ -1039,9 +1041,9 @@ pid_t setsid(void);
 6. 在关闭了文件描述符0、1、2之后，守护进程通常会打开/dev/null 并使用dup2() 使所有这些描述符指向这个设备。
 7. 核心业务逻辑
 
-# 3. 多线程
+## 3. 多线程
 
-## 线程
+### 线程
 
 进程是 CPU 资源分配的最小单位，线程是操作系统调度执行的最小单位
 一个进程内可以包含多个线程，不同线程间独立运行，且共享同一份全局内存区域，包括 初始化数据段(.data)、未初始化数据段(.bss)、堆内存段。
@@ -1063,7 +1065,7 @@ pid_t setsid(void);
 - 实时调度策略的优先级
 - 栈空间、本地变量、函数的调用链接信息
 
-## 线程操作函数
+### 线程操作函数
 
 main 函数所在的线程为 主线程，其余创建的线程为子线程
 线程 ID 为 pthread_t 类型
@@ -1107,7 +1109,7 @@ int pthread_detach(pthread_t thread);
 int pthread_cancel(pthread_t thread);
 ```
 
-## 线程属性
+### 线程属性
 
 类型：pthread_attr_t
 
@@ -1125,13 +1127,13 @@ int pthread_attr_getdetachstate(const pthread_attr_t *attr, int *detachstate);
 int pthread_attr_setdetachstate(pthread_attr_t *attr, int detachstate);
 ```
 
-## 线程同步
+### 线程同步
 
 临界区：访问共享资源的代码段，应保证多个线程不会同时访问共享资源
 
 线程同步：同一时刻，只能有一个线程对共享资源进行操作，当其他线程对该共享资源操作时，应处于等待状态。
 
-### 互斥量（互斥锁）
+#### 互斥量（互斥锁）
 
 通过互斥量的加锁、解锁状态，来保证对共享资源的原子访问
 
@@ -1167,7 +1169,7 @@ int pthread_mutex_trylock(pthread_mutex_t *mutex);
 int pthread_mutex_unlock(pthread_mutex_t *mutex);
 ```
 
-### 死锁
+#### 死锁
 
 死锁：多个线程在执行过程中，因争夺共享资源而造成的一个互相等待的现象
 
@@ -1182,7 +1184,7 @@ int pthread_mutex_unlock(pthread_mutex_t *mutex);
 - 不可剥夺
 - 循环等待
 
-### 读写锁
+#### 读写锁
 
 读共享锁：允许多个线程读，不允许写
 写独占锁：只允许一个线程写，不允许读
@@ -1215,9 +1217,9 @@ int pthread_rwlock_trywrlock(pthread_rwlock_t *rwlock);
 int pthread_rwlock_unlock(pthread_rwlock_t *rwlock);
 ```
 
-### 生产者消费者模型
+#### 生产者消费者模型
 
-### 条件变量
+#### 条件变量
 
 条件变量类型`pthread_cond_t`
 
@@ -1247,7 +1249,7 @@ int pthread_cond_signal(pthread_cond_t *cond);
 int pthread_cond_broadcast(pthread_cond_t *cond);
 ```
 
-### 信号量
+#### 信号量
 
 信号量类型`sem_t`
 
@@ -1280,11 +1282,11 @@ int sem_post(sem_t *sem);
 int sem_getvalue(sem_t *sem, int *sval);
 ```
 
-# 4. 网络编程
+## 4. 网络编程
 
-## 网络基础
+### 网络基础
 
-### 端口
+#### 端口
 
 **常见端口号**
 - 21 FTP 服务
@@ -1294,7 +1296,7 @@ int sem_getvalue(sem_t *sem, int *sval);
 - 80 HTTP 服务
 - 443 HTTPS 服务
 
-# 5. WebServer
+## 5. WebServer
 
-## 日志
+### 日志
 

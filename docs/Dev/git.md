@@ -1,4 +1,6 @@
-# git config
+# git 笔记
+
+## git config
 
 ```shell
 # 查看git用户信息
@@ -10,7 +12,7 @@ $ git config –-global user.name "<用户名>"
 $ git config –-global user.email "<邮箱地址>"
 ```
 
-# git init
+## git init
 
 ```shell
 # 创建一个空的git仓库或重新初始化一个现有仓库。
@@ -18,7 +20,7 @@ $ git config –-global user.email "<邮箱地址>"
 $ git init [仓库名]
 ```
 
-# git clone
+## git clone
 
 ```shell
 # 默认在当前目录下clone主分支
@@ -28,7 +30,7 @@ $ git clone <远程仓库>
 $ git clone <远程仓库> [-b <分支名>] [<本地目录>]
 ```
 
-# git branch
+## git branch
 
 ```shell
 # 列出本地的所有分支，当前所在分支以 "*" 标出
@@ -52,7 +54,7 @@ $ git branch -d <分支名称>
 $ git branch -D <分支名称>
 ```
 
-# git checkout
+## git checkout
 
 ```shell
 # 切换到已存在的指定分支
@@ -62,7 +64,7 @@ $ git checkout <分支名称>
 $ git checkout -b <分支名称>
 ```
 
-# git add
+## git add
 
 ```shell
 # 添加文件到暂存区
@@ -77,7 +79,7 @@ $ git add -A [<文件路径>]
 $ git add --all [<文件路径>]
 ```
 
-# git commit
+## git commit
 
 ```shell
 # 使用git commit前需使用git add命令将文件添加到暂存区
@@ -96,7 +98,7 @@ $ git commit -m "[描述信息]"
 $ git commit -a -m "[描述信息]"
 ```
 
-# git pull
+## git pull
 
 ```shell
 # 从远程仓库获取最新版本并合并到本地仓库（默认主分支）
@@ -107,7 +109,7 @@ $ git pull <远程仓库> <远程分支>
 $ git pull origin branch1
 ```
 
-# git push
+## git push
 
 ```shell
 # 把本地仓库推送到远程仓库（默认主分支）
@@ -118,7 +120,7 @@ $ git push <远程仓库> <远程分支>
 $ git push origin branch1
 ```
 
-# git status
+## git status
 
 ```shell
 # 显示工作目录和暂存区的状态。

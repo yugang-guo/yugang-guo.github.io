@@ -1,12 +1,8 @@
-# JavaSE
+# Java笔记
 
-## 学习路线
+## JavaSE
 
-https://www.bilibili.com/video/BV1Rx411876f/?spm_id_from=333.999.0.0&vd_source=b9435537613316ae78f950a35c22f30a
-
-P1-P159、P456-end
-
-## 注释
+### 注释
 
 ```java
 // 单行注释
@@ -22,7 +18,7 @@ P1-P159、P456-end
 */
 ```
 
-## 命名规范
+### 命名规范
 
 - 类名、接口名：大驼峰 UpperCamelCase
 - 方法名、变量名：小驼峰 lowerCamelCase
@@ -30,7 +26,7 @@ P1-P159、P456-end
 - 抽象类以Abstract、Base开头，异常类以Exception结尾，测试类以Test结尾
 - POJO类中boolean变量不要加is，否则引起序列化错误
 
-## 继承的执行顺序
+### 继承的执行顺序
 
 1. 父类的静态代码段
 2. 子类的静态代码段
@@ -39,7 +35,7 @@ P1-P159、P456-end
 5. 子类代码段
 6. 子类构造方法
 
-## instanceof
+### instanceof
 
 用于多态情况下，向下转型之前进行运行期类型判断
 
@@ -55,9 +51,9 @@ if(b instanceof Child2) {
 }
 ```
 
-## 常用类接口
+### 常用类接口
 
-### String
+#### String
 
 ```java
 String s;
@@ -97,7 +93,7 @@ str.append(s); // s 可以为 字符串 或 字符
 String <- str.toString();
 ```
 
-### 数组
+#### 数组
 
 ```java
 int[] nums;
@@ -106,7 +102,7 @@ int[] nums;
 int <- nums.length;
 ```
 
-### List
+#### List
 
 ```java
 List<Integer> arr = new ArrayList<>();
@@ -142,7 +138,7 @@ int[] nums = new int[arr.size()];
 arr.toArray(nums);
 ```
 
-### Set
+#### Set
 
 ```java
 Set<Integer> set = new HashSet<>();
@@ -160,7 +156,7 @@ boolean <- set.remove(num);
 int <- set.size();
 ```
 
-### Map
+#### Map
 
 ```java
 Map<Integer, String> map = new HashMap<>();
@@ -192,27 +188,27 @@ for(String value : map.values()) {
 }
 ```
 
-# JDBC
+## JDBC
 
 https://www.bilibili.com/video/BV1Bt41137iB/?spm_id_from=333.999.0.0&vd_source=b9435537613316ae78f950a35c22f30a
 
 不重要
 
-# JavaWeb
+## JavaWeb
 
 https://www.bilibili.com/video/BV1Z3411C7NZ/?spm_id_from=333.999.0.0&vd_source=b9435537613316ae78f950a35c22f30a
 
 重要
 
-# Maven
+## Maven
 
 
 
-# Spring
+## Spring
 
-## IoC
+### IoC
 
-### 实现
+#### 实现
 
 ```java
 //创建ioc容器对象，指定配置文件，ioc也开始实例组件对象
@@ -223,7 +219,7 @@ PetStoreService service = context.getBean("petStore", PetStoreService.class);
 List<String> userList = service.getUsernameList();
 ```
 
-### 注解
+#### 注解
 
 Bean注解
 - @Component 普通组件Bean
@@ -251,7 +247,7 @@ Bean属性赋值
   - @Value(${key})：取外部配置key对应的值!
   - @Value(${key:defaultValue})：没有key,可以给与默认值
 
-### 配置类
+#### 配置类
 
 Spring配置类注解
 - @Configuration：标记配置类
@@ -285,9 +281,9 @@ iocContainerAnnotation.refresh();
 
 @Import：允许从另一个配置类加载 @Bean 定义
 
-## AOP 面向切面编程
+### AOP 面向切面编程
 
-### 实现
+#### 实现
 - @Aspect：切面类
 - @EnableAspectJAutoProxy：开启Aspectj注解支持，作用于配置类
 - @Before：AOP前置通知
@@ -296,7 +292,7 @@ iocContainerAnnotation.refresh();
 - @After：AOP后置通知
 - 属性：(value = "execution(public int com.atguigu.proxy.CalculatorPureImpl.add(int,int))")
 
-### 通知
+#### 通知
 
 - JoinPoint作为通知方法的形参
 ```java
@@ -364,14 +360,14 @@ public Object manageTransaction(ProceedingJoinPoint joinPoint) {
 
 - 切面优先级：@Order(value)
 
-## 声明式事务
+### 声明式事务
 
-### 实现
+#### 实现
 
 - @EnableTransactionManagement：配置事务管理，作用于配置类
 - @Transactional：事务注解
 
-### 事务属性
+#### 事务属性
 
 - 只读
 ```java
@@ -395,9 +391,9 @@ public Object manageTransaction(ProceedingJoinPoint joinPoint) {
   - REQUIRED 默认值，如果父方法有事务，就加入，如果没有就新建自己独立
   - REQUIRES_NEW：不管父方法是否有事务，我都新建事务，都是独立的
 
-# MyBatis
+## MyBatis
 
-## 实现
+### 实现
 
 - JDBC：Dao层（Java代码+SQL语句）
 - MyBatis：Mapper接口（Java代码）+MapperXML文件（SQL语句）
@@ -446,21 +442,21 @@ public interface EmployeeMapper {
 - 方法的参数和SQL的参数一致
 - 接口的全类名和映射配置文件的名称空间一致
 
-## 基本使用
+### 基本使用
 
-### SQL传参
+#### SQL传参
 
 1. #{}：占位符
 2. ${}：底层是字符串拼接
 
-### 数据输入
+#### 数据输入
 
 1. 单参数：SQL语句中的\#{}可随意命名，建议和Mapper接口方法的参数名一致
 2. POJO实体类：根据#{}中传入的数据，加工成getXxx()方法，通过反射在实体类对象中调用该方法，从而获取数据
 3. 多参数：在Mapper接口方法的参数旁 定义@Param("xxx")
 4. Map参数：\#{}中写Map中的key
 
-### 数据输出
+#### 数据输出
 
 - 增删改操作返回受影响的行数，使用int / long类型接收
 - 查询操作返回查询结果
@@ -474,14 +470,14 @@ public interface EmployeeMapper {
 - 若返回实体类，resultType 为实体类的全类名
 - 返回自增主键，useGeneratedKeys="true" keyProperty="empId" ，其中keyProperty为主键在实体类中的属性名
 
-## 多表映射
+### 多表映射
 
 | 关联关系 | 配置项关键词                              | 所在配置文件和具体位置            |
 | -------- | ----------------------------------------- | --------------------------------- |
 | 对一     | association标签/javaType属性/property属性 | Mapper配置文件中的resultMap标签内 |
 | 对多     | collection标签/ofType属性/property属性    | Mapper配置文件中的resultMap标签内 |
 
-## 动态语句
+### 动态语句
 
 - where / if 标签
 
@@ -538,13 +534,12 @@ public interface EmployeeMapper {
 </foreach>
 ```
 
-# SpringMVC
+## SpringMVC
 
 作用于Controller表述层
 
 
-
-核心组件
+**核心组件**
 
 - DispatcherServlet：web.xml配置生效，整个流程处理的核心，所有请求都经过它的处理和分发
 - HandlerMapping：IoC配置生效，内部缓存handler(controller方法)和handler访问路径数据，被DispatcherServlet调用，用于查找路径对应的handler
@@ -554,7 +549,7 @@ public interface EmployeeMapper {
 
 
 
-实现
+### 实现
 
 - Controller层
     - @RequestMapping("/springmvc/hello") ：向HandlerMapping中注册路径
@@ -595,9 +590,9 @@ public class MyWebAppInitializer extends AbstractAnnotationConfigDispatcherServl
 }
 ```
 
-## 接收数据
+### 接收数据
 
-### 访问路径
+#### 访问路径
 
 `@RequestMapping(value = {“路径”})`
 
@@ -615,7 +610,7 @@ public enum RequestMethod {
 
 HTTP方法的变体：`@GetMapping` `@PostMapping` `@PutMapping` `@DeleteMapping` `@PatchMapping` （只能设置的Handler方法上）
 
-### 接收参数
+#### 接收参数
 
 **param参数**
 
@@ -648,16 +643,16 @@ HTTP方法的变体：`@GetMapping` `@PostMapping` `@PutMapping` `@DeleteMapping
 
 `@RequestHeader`注解：`(@RequestHeader("Keep-Alive") long keepAlive)`
 
-### 共享域
+#### 共享域
 
 1. `Application` 级别共享域：`ServletContext` 对象可以在整个 Web 应用程序中共享数据
 2. `Session` 级别共享域：`HttpSession` 对象可以在同一用户发出的多个请求之间共享数据，但只能在同一个会话中使用。
 3. `Request` 级别共享域：`HttpServletRequest` 对象可以在同一个请求的多个处理器方法之间共享数据。
 4. `PageContext` 共享域：`PageContext` 对象是在 JSP 页面Servlet 创建时自动创建的，它可以在 JSP 的各个作用域中共享数据。
 
-## 响应数据
+### 响应数据
 
-### 页面跳转
+#### 页面跳转
 
 **jsp页面**
 
@@ -680,7 +675,7 @@ handler页面：返回值为字符串，格式为：`关键字: /路径`，路�
 
 转发关键字：`forward`，重定向关键字：`redirect`
 
-### 返回JSON数据
+#### 返回JSON数据
 
 在配置类中加入 `@EnableWebMvc `注解
 
@@ -688,7 +683,7 @@ handler方法，使用 `@ResponseBody`注解，用于将方法返回的对象序
 
 `RestController ` = `Controller ` + `ResponseBody `
 
-### 返回静态资源
+#### 返回静态资源
 
 在配置类中设置静态资源处理
 
@@ -700,13 +695,13 @@ public void configureDefaultServletHandling(DefaultServletHandlerConfigurer conf
 }
 ```
 
-## 异常处理
+### 异常处理
 
 - 异常处理类：通过`RestControllerAdvice`声明，其中`@RestControllerAdvice = @ControllerAdvice + @ResponseBody`，`ControllerAdvice `代表当前类的异常处理controller
 - 异常处理handler方法：通过`@ExceptionHandler(异常.class)`映射异常
 - 配置类：确保异常处理类被 `@ComponentScan` 扫描
 
-### 拦截器
+#### 拦截器
 
 - 创建拦截器类
 
@@ -737,7 +732,7 @@ public void addInterceptors(InterceptorRegistry registry) {
 }
 ```
 
-### 参数校验
+#### 参数校验
 
 **JSR 303**
 

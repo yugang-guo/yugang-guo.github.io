@@ -1,6 +1,8 @@
-# 二叉树
+# 数据结构与算法笔记
 
-## 二叉树结构
+## 二叉树
+
+### 二叉树结构
 
 ```cpp
 struct TreeNode
@@ -15,7 +17,7 @@ struct TreeNode
 ```
 
 
-## N叉树结构
+### N叉树结构
 
 ```cpp
 class Node
@@ -40,7 +42,7 @@ public:
 ```
 
 
-## 翻转
+### 翻转
 
 ```cpp
 void Reverse(vector<int>& result)
@@ -55,11 +57,11 @@ void Reverse(vector<int>& result)
 ```
 
 
-## 二叉树遍历
+### 二叉树遍历
 
-### 递归
+#### 递归
 
-#### 前序遍历
+##### 前序遍历
 
 ```c++
 void traversal(TreeNode* root, vector<int>& result)
@@ -77,7 +79,7 @@ vector<int> preorderTraversal(TreeNode *root)
 }
 ```
 
-#### 后序遍历
+##### 后序遍历
 
 ```c++
 void traversal(TreeNode* root, vector<int>& result)
@@ -95,7 +97,7 @@ vector<int> postorderTraversal(TreeNode* root)
 }
 ```
 
-#### 中序遍历
+##### 中序遍历
 
 ```c++
 void traversal(TreeNode* root, vector<int>& result)
@@ -114,11 +116,9 @@ vector<int> inorderTraversal(TreeNode* root)
 ```
 
 
-### 迭代
+#### 迭代
 
-#### 前序遍历
-
-##### （方法一）
+##### 前序遍历（方法一）
 
 ```c++
 vector<int> preorderTraversal(TreeNode* root) 
@@ -139,7 +139,7 @@ vector<int> preorderTraversal(TreeNode* root)
 }
 ```
 
-##### （方法二）
+##### 前序遍历（方法二）
 
 ```c++
 vector<int> preorderTraversal(TreeNode* root)
@@ -169,9 +169,7 @@ vector<int> preorderTraversal(TreeNode* root)
 ```
 
 
-#### 后序遍历
-
-##### （方法一）
+##### 后序遍历（方法一）
 
 ```c++
 vector<int> postorderTraversal(TreeNode* root)
@@ -196,7 +194,7 @@ vector<int> postorderTraversal(TreeNode* root)
 }
 ```
 
-##### （方法二）
+##### 后序遍历（方法二）
 
 ```c++
 vector<int> postorderTraversal(TreeNode* root)
@@ -227,7 +225,7 @@ vector<int> postorderTraversal(TreeNode* root)
 ```
 
 
-#### 中序遍历（只有方法二）
+##### 中序遍历（只有方法二）
 
 ```c++
 vector<int> inorderTraversal(TreeNode* root)
@@ -256,7 +254,7 @@ vector<int> inorderTraversal(TreeNode* root)
 }
 ```
 
-#### 层序遍历（BFS）
+##### 层序遍历（BFS）
 
 ```c++
 vector<vector<int>> levelOrder(TreeNode* root)
@@ -285,8 +283,10 @@ vector<vector<int>> levelOrder(TreeNode* root)
     return result;
 }
 ```
-# 排序
-## 交换swap
+
+## 排序
+
+### 交换swap
 
 ```cpp
 void swap(int& a, int& b)
@@ -305,9 +305,9 @@ void swap(int& a, int& b)
 ```
 
 
-## 冒泡排序 O(n^2)
+### 冒泡排序 O(n^2)
 
-### 一
+#### 一
 
 isSort：是否已经有序的标志
 
@@ -330,7 +330,7 @@ void Bubble_Sort(vector<int>& nums)
 }
 ```
 
-### 二
+#### 二
 
 border：记录上一次最后交换的位置，下一轮交换只需要进行到这个位置即可
 
@@ -353,7 +353,7 @@ void Bubble_Sort(vector<int>& nums)
 }
 ```
 
-### 三
+#### 三
 
 鸡尾酒排序：定向冒泡排序，同时的冒泡两边
 
@@ -385,7 +385,7 @@ void Bubble_Sort(vector<int>& nums)
 ```
 
 
-## 选择排序 O(n^2)
+### 选择排序 O(n^2)
 
 每次从待排序列中选出一个最小值，然后放在序列的起始位置，直到全部待排数据排完即可。
 
@@ -406,7 +406,7 @@ void Select_Sort(vector<int>& nums)
 ```
 
 
-## 插入排序 O(n^2)
+### 插入排序 O(n^2)
 
 在待排序的元素中，假设前n-1个元素已有序，现将第n个元素插入到前面已经排好的序列中，使得前n个元素有序。按照此法对所有元素进行插入，直到整个序列有序。
 
@@ -428,7 +428,7 @@ void Insert_Sort(vector<int>& nums)
 ```
 
 
-## 归并排序 O(nlogn)
+### 归并排序 O(nlogn)
 
 将已有序的子序合并，从而得到完全有序的序列，即先使每个子序有序，再使子序列段间有序。
 
@@ -488,7 +488,7 @@ void Merge_Sort(vector<int>& nums, int left, int right) // 左闭右闭
 ```
 
 
-## 堆排序 O(nlogn)
+### 堆排序 O(nlogn)
 
 ```cpp
 void heapify(vector<int>& nums, int nums_size, int root)
@@ -532,7 +532,7 @@ void Heap_Sort(vector<int>& nums)
 ```
 
 
-## 希尔排序
+### 希尔排序
 
 先选定一个小于nums.size()的整数gap作为第一增量，然后将所有距离为gap的元素分在同一组，并对每一组的元素进行直接插入排序。然后再取一个比第一增量小的整数作为第二增量，重复上述操作…
 
@@ -561,7 +561,7 @@ void Shell_Sort(vector<int>& nums)
 ```
 
 
-## 快速排序 O(nlogn)
+### 快速排序 O(nlogn)
 
 任取待排序元素序列中的某元素作为基准值，按照该基准值将待排序列分为两子序列，左子序列中所有元素均小于基准值，右子序列中所有元素均大于基准值，然后左右序列重复该过程，直到所有元素都排列在相应位置上为止。
 
@@ -593,7 +593,7 @@ void Quick_Sort(vector<int>& nums, int left, int right) // 左闭右闭
 }
 ```
 
-### 二路快排
+#### 二路快排
 
 ```cpp
 void quicksort(vector<int>& nums, int left, int right) {
@@ -634,7 +634,7 @@ void quicksort(vector<int>& nums, int left, int right) {
 }
 ```
 
-### 三路快排
+#### 三路快排
 
 - 当数据包含大量的重复元素，不论 pivot 如何选择，都会导致左右区间的大小严重失衡，应选择三路排序：分成三个区间，左（小于pivot） ，中（等于pivot），右（ 大于pivot），这样左右区间的大小不会相差太大。
 
