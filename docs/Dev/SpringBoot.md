@@ -44,6 +44,7 @@ public class DataSourceConfigurationProperties {
 ## 整合SpringMVC
 
 Web配置参数：
+
 - `server.port`：端口号，默认为8080
 - `server.servlet.context-path`：应用程序的上下文路径，默认为空
 - `spring.mvc.view.prefix` `spring.mvc.view.suffix`：视图解析器的前缀、后缀
