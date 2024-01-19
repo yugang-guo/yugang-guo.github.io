@@ -10,7 +10,11 @@ nav:
     - Blog/index.md
   - 开发:
     - Dev/index.md
-    - Java: Dev/java.md
+    - Java: 
+      - JavaSE: Dev/JavaSE.md
+      - Spring: Dev/Spring.md
+      - SpringMVC: Dev/SpringMVC.md
+      - MyBatis: Dev/MyBatis.md
     - 算法:
       - 数据结构与算法: Dev/DSA.md
       - Leetcode Hot100: Dev/Hot100.md
