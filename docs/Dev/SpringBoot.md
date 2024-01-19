@@ -51,6 +51,7 @@ Web配置参数：
 - `spring.http.encoding.charset` `spring.http.encoding.enabled`：HTTP请求和相应的字符编码
 
 默认的静态资源路径
+
 - `classpath:/META-INF/resources/`
 - `classpath:/resources/`
 - `classpath:/static/`
@@ -61,13 +62,14 @@ Web配置参数：
 ## 整合MyBatis
 
 步骤：
+
 - 导入依赖
--  `application.yml`配置数据源
--  创建实体类
--  创建Mapper接口
--  创建Mapper接口SQL实现
--  创建启动类
--  注解扫描：在Spring Boot的启动类上添加`@MapperScan`注解，用于扫描和注册Mapper接口。
--  使用Mapper接口
+- `application.yml`配置数据源
+- 创建实体类
+- 创建Mapper接口
+- 创建Mapper接口SQL实现
+- 创建启动类
+- 注解扫描：在Spring Boot的启动类上添加`@MapperScan`注解，用于扫描和注册Mapper接口。
+- 使用Mapper接口
 
 声明式事务：在 Service 方法中添加 `@Transactional` 注解
