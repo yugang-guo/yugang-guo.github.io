@@ -78,6 +78,7 @@ iocContainerAnnotation.refresh();
 ## AOP 面向切面编程
 
 ### 实现
+
 - @Aspect：切面类
 - @EnableAspectJAutoProxy：开启Aspectj注解支持，作用于配置类
 - @Before：AOP前置通知
@@ -158,8 +159,19 @@ public Object manageTransaction(ProceedingJoinPoint joinPoint) {
 
 ### 实现
 
-- @EnableTransactionManagement：配置事务管理，作用于配置类
-- @Transactional：事务注解
+- `@EnableTransactionManagement`：配置事务管理，作用于配置类
+- 声明`transactionManager`方法：指定事务管理器
+
+```java
+@Bean
+    public DataSourceTransactionManager transactionManager(DataSource dataSource){
+        DataSourceTransactionManager transactionManager = new DataSourceTransactionManager();
+        transactionManager.setDataSource(dataSource);
+        return transactionManager;
+    }
+```
+
+- `@Transactional`：事务注解
 
 ### 事务属性
 

@@ -5,6 +5,8 @@
 - JDBC：Dao层（Java代码+SQL语句）
 - MyBatis：Mapper接口（Java代码）+MapperXML文件（SQL语句）
 
+**Mapper接口**
+
 ```java
 // Mapper接口文件
 package com.atguigu.mapper;
@@ -21,6 +23,8 @@ public interface EmployeeMapper {
     
 }
 ```
+
+**MapperXML配置**
 
 ```xml
 <!-- MapperXML文件 -->
@@ -48,6 +52,67 @@ public interface EmployeeMapper {
 - 方法返回值和resultType一致
 - 方法的参数和SQL的参数一致
 - 接口的全类名和映射配置文件的名称空间一致
+
+**具体调用**
+
+```java
+//1.读取外部配置文件
+InputStream ips = Resources.getResourceAsStream("mybatis-config.xml");
+
+//2.创建sqlSessionFactory
+SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(ips);
+
+//3.创建sqlSession
+SqlSession sqlSession = sqlSessionFactory.openSession();
+//4.获取mapper代理对象
+EmpMapper empMapper = sqlSession.getMapper(EmpMapper.class);
+//5.数据库方法调用
+int rows = empMapper.deleteEmpById(1);
+System.out.println("rows = " + rows);
+//6.提交和回滚
+sqlSession.commit();
+sqlSession.close();
+```
+
+SqlSessionFactory 和 Mapper 实例需交给 IoC 进行管理，MyBatis 提供了封装 SqlSessionFactory 和 Mapper 实例化的逻辑的FactoryBean组件：`SqlSessionFactoryBean`
+
+```java
+// Mapper 配置类
+
+/**
+ * 配置SqlSessionFactoryBean,指定连接池对象和外部配置文件即可
+ * @param dataSource 需要注入连接池对象
+ * @return 工厂Bean
+ */
+@Bean
+public SqlSessionFactoryBean sqlSessionFactoryBean(DataSource dataSource){
+    //实例化SqlSessionFactory工厂
+    SqlSessionFactoryBean sqlSessionFactoryBean = new SqlSessionFactoryBean();
+
+    //设置连接池
+    sqlSessionFactoryBean.setDataSource(dataSource);
+
+    //设置配置文件
+    //包裹外部配置文件地址对象
+    Resource resource = new ClassPathResource("mybatis-config.xml");
+    sqlSessionFactoryBean.setConfigLocation(resource);
+
+    return sqlSessionFactoryBean;
+}
+
+/**
+ * 配置Mapper实例扫描工厂,配置 <mapper <package 对应接口和mapperxml文件所在的包
+ * @return
+ */
+@Bean
+public MapperScannerConfigurer mapperScannerConfigurer(){
+    MapperScannerConfigurer mapperScannerConfigurer = new MapperScannerConfigurer();
+    //设置mapper接口和xml文件所在的共同包
+    mapperScannerConfigurer.setBasePackage("com.atguigu.mapper");
+    return mapperScannerConfigurer;
+}
+
+```
 
 ## 基本使用
 
