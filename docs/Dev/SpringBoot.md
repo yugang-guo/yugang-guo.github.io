@@ -61,13 +61,13 @@ Web配置参数：
 ## 整合MyBatis
 
 步骤：
-1. 导入依赖
-2. `application.yml`配置数据源
-3. 创建实体类
-4. 创建Mapper接口
-5. 创建Mapper接口SQL实现
-6. 创建启动类
-7. 注解扫描：在Spring Boot的启动类上添加`@MapperScan`注解，用于扫描和注册Mapper接口。
-8. 使用Mapper接口
+- 导入依赖
+-  `application.yml`配置数据源
+-  创建实体类
+-  创建Mapper接口
+-  创建Mapper接口SQL实现
+-  创建启动类
+-  注解扫描：在Spring Boot的启动类上添加`@MapperScan`注解，用于扫描和注册Mapper接口。
+-  使用Mapper接口
 
 声明式事务：在 Service 方法中添加 `@Transactional` 注解
