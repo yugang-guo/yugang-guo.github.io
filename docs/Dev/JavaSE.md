@@ -1,5 +1,7 @@
 # JavaSE 笔记
 
+[TOC]
+
 ## 注释
 
 ```java

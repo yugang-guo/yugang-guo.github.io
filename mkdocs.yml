@@ -18,6 +18,7 @@ nav:
       - MyBatis: Dev/MyBatis.md
       - SpringBoot: Dev/SpringBoot.md
       - MyBatis-Plus: Dev/MyBatis-Plus.md
+      - 插件: Dev/plugin.md
     - 算法:
       - 数据结构与算法: Dev/DSA.md
       - Leetcode Hot100: Dev/Hot100.md

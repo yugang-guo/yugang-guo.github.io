@@ -1,13 +1,15 @@
 # MyBatis-Plus 笔记
 
+[TOC]
+
+## Mapper 接口
+
 Mapper 接口继承 MyBatis-Plus 提供的 BaseMapper 基础接口，自动提供 CRUD 方法
 
 ```java
 // 泛型为数据库对应的实体类
 public interface UserMapper extends BaseMapper<User> {}
 ```
-
-## Mapper 接口
 
 ### Insert
 
@@ -119,16 +121,20 @@ public class UserServiceImpl extends ServiceImpl<UserMapper,User> implements Use
 
 ### CRUD 方法
 
+1. **保存**
+
 ```java
-保存：
 // 插入一条记录（选择字段，策略插入）
 boolean save(T entity);
 // 插入（批量）
 boolean saveBatch(Collection<T> entityList);
 // 插入（批量）
 boolean saveBatch(Collection<T> entityList, int batchSize);
+```
 
-修改或者保存：
+2. **修改或者保存：**
+
+```java
 // TableId 注解存在更新记录，否插入一条记录
 boolean saveOrUpdate(T entity);
 // 根据updateWrapper尝试更新，否继续执行saveOrUpdate(T)方法
@@ -137,8 +143,11 @@ boolean saveOrUpdate(T entity, Wrapper<T> updateWrapper);
 boolean saveOrUpdateBatch(Collection<T> entityList);
 // 批量修改插入
 boolean saveOrUpdateBatch(Collection<T> entityList, int batchSize);
+```
 
-移除：
+3. **移除：**
+
+```java
 // 根据 queryWrapper 设置的条件，删除记录
 boolean remove(Wrapper<T> queryWrapper);
 // 根据 ID 删除
@@ -147,8 +156,11 @@ boolean removeById(Serializable id);
 boolean removeByMap(Map<String, Object> columnMap);
 // 删除（根据ID 批量删除）
 boolean removeByIds(Collection<? extends Serializable> idList);
+```
 
-更新：
+4. **更新：**
+
+```java
 // 根据 UpdateWrapper 条件，更新记录 需要设置sqlset
 boolean update(Wrapper<T> updateWrapper);
 // 根据 whereWrapper 条件，更新记录
@@ -159,14 +171,20 @@ boolean updateById(T entity);
 boolean updateBatchById(Collection<T> entityList);
 // 根据ID 批量更新
 boolean updateBatchById(Collection<T> entityList, int batchSize);
+```
 
-数量： 
+5. **数量：**
+
+```java 
 // 查询总记录数
 int count();
 // 根据 Wrapper 条件，查询总记录数
 int count(Wrapper<T> queryWrapper);
+```
 
-查询：
+6. **查询：**
+
+```java
 // 根据 ID 查询
 T getById(Serializable id);
 // 根据 Wrapper，查询一条记录。结果集，如果是多个会抛出异常，随机取一条加上限制条件 wrapper.last("LIMIT 1")
@@ -177,8 +195,11 @@ T getOne(Wrapper<T> queryWrapper, boolean throwEx);
 Map<String, Object> getMap(Wrapper<T> queryWrapper);
 // 根据 Wrapper，查询一条记录
 <V> V getObj(Wrapper<T> queryWrapper, Function<? super Object, V> mapper);
+```
 
-集合：
+7. **集合：**
+
+```java
 // 查询所有
 List<T> list();
 // 查询列表
@@ -199,23 +220,23 @@ List<Object> listObjs();
 List<Object> listObjs(Wrapper<T> queryWrapper);
 // 根据 Wrapper 条件，查询全部记录
 <V> List<V> listObjs(Wrapper<T> queryWrapper, Function<? super Object, V> mapper);
-
 ```
 
 ### 分页查询
 
-- 添加分页拦截器
+1. 添加分页拦截器
 
 ```java
 @Bean
 public MybatisPlusInterceptor mybatisPlusInterceptor() {
     MybatisPlusInterceptor interceptor = new MybatisPlusInterceptor();
+    // 分页拦截器
     interceptor.addInnerInterceptor(new PaginationInnerInterceptor(DbType.MYSQL));
     return interceptor;
 }
 ```
 
-- Service 方法：调用 Mapper 方法
+2. Service 方法：调用 Mapper 方法
 
 ```java
 //1.条件构造器
@@ -246,7 +267,7 @@ pageInfoMap.put("pageInfo",pageInfo);
 return Result.ok(pageInfoMap);
 ```
 
-- Mapper 方法
+3. Mapper 方法
 
 ```java
 //传入参数携带Ipage接口
@@ -266,7 +287,27 @@ Wrapper ： 条件构造抽象类，最顶端父类
         - LambdaUpdateWrapper ： Lambda 更新封装Wrapper
 
 
-- UpdateWrapper可以将列值修改为 null 值，可随意更改列值
+> UpdateWrapper可以将列值修改为 null 值，可随意更改列值
+
+> 推荐使用 Lambda 条件构造器，能直接使用实体类的属性 getter 方法（类名:方法名）
+
+**对比**
+
+```java
+// QueryWrapper
+QueryWrapper<User> queryWrapper = new QueryWrapper<>();
+queryWrapper.eq("name", "John")
+  .ge("age", 18)
+  .orderByDesc("create_time")
+  .last("limit 10");
+
+// LambdaQueryWrapper
+LambdaQueryWrapper<User> lambdaQueryWrapper = new LambdaQueryWrapper<>();
+lambdaQueryWrapper.eq(User::getName, "John")
+  .ge(User::getAge, 18)
+  .orderByDesc(User::getCreateTime)
+  .last("limit 10");
+```
 
 **条件语法：**
 
@@ -302,12 +343,14 @@ public class User {
 |type|Enum|否|IdType.NONE|指定主键类型|
 
 
-IdType 可选参数：
+**IdType 可选参数：**
 
 |值|描述|
 |-|-|
 |AUTO|数据库 ID 自增 (mysql配置主键自增长)|
 |ASSIGN_ID（默认）|分配 ID(主键类型为 Number(Long )或 String)(since 3.3.0),使用接口`IdentifierGenerator`的方法`nextId`(默认实现类为`DefaultIdentifierGenerator`雪花算法)|
+
+雪花算法生成的ID需使用 Long 或 String 类型
 
 ## 逻辑删除
 
@@ -338,4 +381,47 @@ public class User {
     private Integer deleted;
 }
 
+```
+
+## 乐观锁
+
+**版本号/时间戳**：为数据添加一个版本号或时间戳字段，每次更新数据时，比较当前版本号或时间戳与期望值是否一致，若一致则更新成功，否则表示数据已被修改，需要进行冲突处理
+
+- 添加版本号拦截器
+
+```java
+@Bean
+public MybatisPlusInterceptor mybatisPlusInterceptor() {
+    MybatisPlusInterceptor interceptor = new MybatisPlusInterceptor();
+    // 版本号拦截器
+    interceptor.addInnerInterceptor(new OptimisticLockerInnerInterceptor());
+    return interceptor;
+}
+```
+
+- Version 字段
+    - 数据库表
+
+    ```sql
+    ALTER TABLE USER ADD VERSION INT DEFAULT 1 ;  # int 类型 乐观锁字段
+    ```
+    - 实体类：`@Version`注解
+
+    ```java
+    @Version
+    private Integer version;
+    ```
+
+## 防止全表更新/删除
+
+- 添加拦截器
+
+```java
+@Bean
+public MybatisPlusInterceptor mybatisPlusInterceptor() {
+  MybatisPlusInterceptor interceptor = new MybatisPlusInterceptor();
+  // 阻止全表更新/删除拦截器
+  interceptor.addInnerInterceptor(new BlockAttackInnerInterceptor());
+  return interceptor;
+}
 ```

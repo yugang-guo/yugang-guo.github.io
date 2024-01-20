@@ -8,6 +8,7 @@
     - [MyBatis](MyBatis.md)
     - [SpringBoot](SpringBoot.md)
     - [MyBatis-Plus](MyBatis-Plus.md)
+    - [插件](plugin.md)
 - 算法:
     - [数据结构与算法](DSA.md)
     - [Leetcode Hot100](Hot100.md)
