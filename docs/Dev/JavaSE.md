@@ -80,12 +80,21 @@ String <- s.substring(startIndex, endIndex);
 // 去除前后空格 -> String
 String <- s.trim();
 
+// 判断字符串是否相等
+// == 比较的是字符串的引用是否相等，equals比较的是内容是否相等
+boolean <- s.equals(str);
+
+-----------------------------------------------------------
+
 // 可变字符串
 StringBuffer str = new StringBuffer(); // 线程安全
 StringBuilder str = new StringBuilder(); // 非线程安全，速度较快
 
 // 尾部添加
 str.append(s); // s 可以为 字符串 或 字符
+
+// 插入字符串 / 字符
+str.insert(int pos, Object data);
 
 // 可变字符串->字符串
 String <- str.toString();
@@ -186,3 +195,26 @@ for(String value : map.values()) {
 }
 ```
 
+### Stack
+
+```java
+Stack<Object> st = new Stack<>();
+
+// 判空
+boolean isEmpty();
+
+// 返回栈顶元素
+Object peek();
+
+// 入栈
+st.push(Object item);
+
+// 栈顶元素出栈
+Object pop();
+
+// 元素数量
+int size();
+
+// 元素在栈中的位置(不存在返回-1，栈顶为1)
+int search(Object item);
+```

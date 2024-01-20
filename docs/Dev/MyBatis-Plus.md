@@ -202,6 +202,58 @@ List<Object> listObjs(Wrapper<T> queryWrapper);
 
 ```
 
+### 分页查询
+
+- 添加分页拦截器
+
+```java
+@Bean
+public MybatisPlusInterceptor mybatisPlusInterceptor() {
+    MybatisPlusInterceptor interceptor = new MybatisPlusInterceptor();
+    interceptor.addInnerInterceptor(new PaginationInnerInterceptor(DbType.MYSQL));
+    return interceptor;
+}
+```
+
+- Service 方法：调用 Mapper 方法
+
+```java
+//1.条件构造器
+LambdaQueryWrapper<Headline> queryWrapper = new LambdaQueryWrapper<>();
+queryWrapper.like(!StringUtils.isEmpty(portalVo.getKeyWords()),Headline::getTitle,portalVo.getKeyWords())
+        .eq(portalVo.getType()!= null,Headline::getType,portalVo.getType());
+
+//2.分页参数（当前页数，总页数）
+IPage<Headline> page = new Page<>(portalVo.getPageNum(),portalVo.getPageSize());
+
+//3.Mapper方法（page，实体类）
+headlineMapper.selectPageMap(page, portalVo);
+
+//4.结果封装
+//分页数据封装
+Map<String,Object> pageInfo =new HashMap<>();
+pageInfo.put("分页数据",page.getRecords()); // List<实体类>
+pageInfo.put("当前页",page.getCurrent());
+pageInfo.put("每页显示的记录数",page.getSize());
+pageInfo.put("总页数",page.getPages());
+pageInfo.put("总记录数",page.getTotal());
+pageInfo.put("是否有上一页",page.hasPrevious());
+pageInfo.put("是否有下一页",page.getTotal());
+
+Map<String,Object> pageInfoMap=new HashMap<>();
+pageInfoMap.put("pageInfo",pageInfo);
+// 响应JSON
+return Result.ok(pageInfoMap);
+```
+
+- Mapper 方法
+
+```java
+//传入参数携带Ipage接口
+//返回结果为IPage
+IPage<User> selectPageVo(IPage<?> page, Integer id);
+```
+
 ### 条件构造器
 
 Wrapper ： 条件构造抽象类，最顶端父类
@@ -212,6 +264,13 @@ Wrapper ： 条件构造抽象类，最顶端父类
     - AbstractLambdaWrapper ： 使用Lambda 语法
         - LambdaQueryWrapper ：用于Lambda语法使用的查询Wrapper
         - LambdaUpdateWrapper ： Lambda 更新封装Wrapper
+
+
+- UpdateWrapper可以将列值修改为 null 值，可随意更改列值
+
+**条件语法：**
+
+![img](assets/MyBatis-Plus/MyBatis-Plus-1.png)
 
 ### 核心注解
 
@@ -259,7 +318,7 @@ IdType 可选参数：
 - 数据库
 
 ```sql
- ALTER TABLE USER ADD deleted INT DEFAULT 0 ;  # int 类型 1 逻辑删除 0 未逻辑删除 
+ALTER TABLE USER ADD deleted INT DEFAULT 0 ;  # int 类型 1 逻辑删除 0 未逻辑删除 
 ```
 
 - 实体类：`@TableLogic`注解
