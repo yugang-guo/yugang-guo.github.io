@@ -4,7 +4,9 @@
 
 作用于Controller表述层
 
-**核心组件**
+## 实现
+
+> **核心组件**
 
 - DispatcherServlet：web.xml配置生效，整个流程处理的核心，所有请求都经过它的处理和分发
 - HandlerMapping：IoC配置生效，内部缓存handler(controller方法)和handler访问路径数据，被DispatcherServlet调用，用于查找路径对应的handler
@@ -12,13 +14,12 @@
 - Handler：Controller类内部的方法简称，自己定义，用来接收参数，向后调用业务，最终返回响应结果
 - ViewResovler：IoC配置生效，主要作用简化模版视图页面查找（前后端分离项目，后端只返回JSON数据，不返回页面，不需要ViewResovler）
 
+> **Controller层**
 
-## 实现
+- @RequestMapping("/springmvc/hello") ：向HandlerMapping中注册路径
+- @ResponseBody：代表向浏览器直接返回数据
 
-- Controller层
-    - @RequestMapping("/springmvc/hello") ：向HandlerMapping中注册路径
-    - @ResponseBody：代表向浏览器直接返回数据
-- 配置类 @EnableWebMvc
+> **配置类:** `@EnableWebMvc`
 
 ```java
 //TODO: SpringMVC提供的接口,是替代web.xml的方案,更方便实现完全注解方式ssm处理!
@@ -76,26 +77,25 @@ HTTP方法的变体：`@GetMapping` `@PostMapping` `@PutMapping` `@DeleteMapping
 
 ### 接收参数
 
-**param参数**
+> **param参数**
 
 - 直接接收：参数名 == 形参名
 - `@RequestParam`：为形参绑定参数名，例如：`@RequestParam(value = "stuAge")`。默认参数必须传递，可设置为非必需传递并指定默认值：`@RequestParam(required = false,defaultValue = "18")`
 - 单参数多值：使用集合接收，`@RequestParam List age`
 - 实体类接收：参数名 == 实体类的属性名
 
-**路径参数**
+> **路径参数**
 
- * 前端路径：/user/1/root   ->   id = 1，  uname = root     即：/user/{动态部分}/{动态部分} 
- * 动态路径：`@GetMapping("/user/{id}/{name}")`
- * 形参列表：`@PathVariable Long id, @PathVariable("name") String uname`
+- 前端路径：/user/1/root   ->   id = 1，  uname = root     即：/user/{动态部分}/{动态部分} 
+- 动态路径：`@GetMapping("/user/{id}/{name}")`
+- 形参列表：`@PathVariable Long id, @PathVariable("name") String uname`
 
-**json参数**
+> **json参数**
 
-创建一个接收json数据的实体类，使用 `@RequestBody` 注解来将 JSON 数据转换为 Java 对象
+- 创建一个接收json数据的实体类，使用 `@RequestBody` 注解来将 JSON 数据转换为 Java 对象
+- 需在配置类中加入`@EnableWebMvc`，用于json数据处理
 
-需在配置类中加入`@EnableWebMvc`，用于json数据处理
-
-**Cookie数据**
+> **Cookie数据**
 
 ```java
 // Cookie示例
@@ -103,7 +103,7 @@ HTTP方法的变体：`@GetMapping` `@PostMapping` `@PutMapping` `@DeleteMapping
 (@CookieValue("JSESSIONID") String cookie)
 ```
 
-**请求头数据**
+> **请求头数据**
 
 `@RequestHeader`注解：`(@RequestHeader("Keep-Alive") long keepAlive)`
 
@@ -118,7 +118,7 @@ HTTP方法的变体：`@GetMapping` `@PostMapping` `@PutMapping` `@DeleteMapping
 
 ### 页面跳转
 
-**jsp页面**
+> **jsp页面**
 
 在配置类中进行jsp视图配置
 
@@ -133,7 +133,7 @@ public void configureViewResolvers(ViewResolverRegistry registry) {
 
 handler页面：返回值为字符串，直接返回jsp逻辑视图名
 
-**转发、重定向**
+> **转发、重定向**
 
 handler页面：返回值为字符串，格式为：`关键字: /路径`，路径为项目路径，不需要添加根路径
 
@@ -167,7 +167,7 @@ public void configureDefaultServletHandling(DefaultServletHandlerConfigurer conf
 
 ### 拦截器
 
-- 创建拦截器类
+> **创建拦截器类**
 
 ```java
 public class Process01Interceptor implements HandlerInterceptor {
@@ -185,7 +185,7 @@ public class Process01Interceptor implements HandlerInterceptor {
 }
 ```
 
-- 在配置类中添加拦截器
+> **在配置类中添加拦截器**
 
 ```java
 //添加拦截器
@@ -198,7 +198,7 @@ public void addInterceptors(InterceptorRegistry registry) {
 
 ### 参数校验
 
-**JSR 303**
+> **JSR 303**
 
 | 注解                       | 规则                                           |
 | -------------------------- | ---------------------------------------------- |
@@ -216,7 +216,7 @@ public void addInterceptors(InterceptorRegistry registry) {
 | @Future                    | 标注值只能用于日期型，且必须是将来的日期       |
 | @Pattern(value)            | 标注值必须符合指定的正则表达式                 |
 
-**Hibernate Validator**
+> **Hibernate Validator**
 
 | 注解      | 规则                               |
 | --------- | ---------------------------------- |

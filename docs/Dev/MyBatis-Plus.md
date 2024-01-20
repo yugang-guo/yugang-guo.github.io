@@ -121,7 +121,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper,User> implements Use
 
 ### CRUD 方法
 
-- 保存:
+> **保存:**
 
 ```java
 // 插入一条记录（选择字段，策略插入）
@@ -132,7 +132,7 @@ boolean saveBatch(Collection<T> entityList);
 boolean saveBatch(Collection<T> entityList, int batchSize);
 ```
 
-- 修改或者保存：
+> **修改或者保存：**
 
 ```java
 // TableId 注解存在更新记录，否插入一条记录
@@ -145,7 +145,7 @@ boolean saveOrUpdateBatch(Collection<T> entityList);
 boolean saveOrUpdateBatch(Collection<T> entityList, int batchSize);
 ```
 
-- 移除：
+> **移除：**
 
 ```java
 // 根据 queryWrapper 设置的条件，删除记录
@@ -158,7 +158,7 @@ boolean removeByMap(Map<String, Object> columnMap);
 boolean removeByIds(Collection<? extends Serializable> idList);
 ```
 
-- 更新：
+> **更新：**
 
 ```java
 // 根据 UpdateWrapper 条件，更新记录 需要设置sqlset
@@ -173,7 +173,7 @@ boolean updateBatchById(Collection<T> entityList);
 boolean updateBatchById(Collection<T> entityList, int batchSize);
 ```
 
-- 数量：
+> **数量：**
 
 ```java 
 // 查询总记录数
@@ -182,7 +182,7 @@ int count();
 int count(Wrapper<T> queryWrapper);
 ```
 
-- 查询：
+> **查询：**
 
 ```java
 // 根据 ID 查询
@@ -197,7 +197,7 @@ Map<String, Object> getMap(Wrapper<T> queryWrapper);
 <V> V getObj(Wrapper<T> queryWrapper, Function<? super Object, V> mapper);
 ```
 
-- 集合：
+> **集合：**
 
 ```java
 // 查询所有
@@ -224,7 +224,7 @@ List<Object> listObjs(Wrapper<T> queryWrapper);
 
 ### 分页查询
 
-- 添加分页拦截器
+> **添加分页拦截器**
 
 ```java
 @Bean
@@ -236,7 +236,7 @@ public MybatisPlusInterceptor mybatisPlusInterceptor() {
 }
 ```
 
-- Service 方法：调用 Mapper 方法
+> **Service 方法**：调用 Mapper 方法
 
 ```java
 //1.条件构造器
@@ -267,7 +267,7 @@ pageInfoMap.put("pageInfo",pageInfo);
 return Result.ok(pageInfoMap);
 ```
 
-- Mapper 方法
+> **Mapper 方法**
 
 ```java
 //传入参数携带Ipage接口
@@ -287,11 +287,11 @@ Wrapper ： 条件构造抽象类，最顶端父类
         - LambdaUpdateWrapper ： Lambda 更新封装Wrapper
 
 
-> UpdateWrapper可以将列值修改为 null 值，可随意更改列值
+1. UpdateWrapper可以将列值修改为 null 值，可随意更改列值
 
-> 推荐使用 Lambda 条件构造器，能直接使用实体类的属性 getter 方法（类名:方法名）
+2. 推荐使用 Lambda 条件构造器，能直接使用实体类的属性 getter 方法（类名:方法名）
 
-**对比**
+> **对比**
 
 ```java
 // QueryWrapper
@@ -309,20 +309,25 @@ lambdaQueryWrapper.eq(User::getName, "John")
   .last("limit 10");
 ```
 
-**条件语法：**
+> **条件语法：**
 
 ![img](assets/MyBatis-Plus/MyBatis-Plus-1.png)
 
 ### 核心注解
 
-- `@TableName`
-    - 描述：表名注解，标识实体类对应的表
-    - 使用位置：实体类
-- `@Table`
-    - 描述：主键注解
-    - 使用位置：实体类主键字段
-- `@TableField`
-    - 描述：字段注解（非主键）
+> `@TableName`
+
+- 描述：表名注解，标识实体类对应的表
+- 使用位置：实体类
+
+> `@Table`
+
+- 描述：主键注解
+- 使用位置：实体类主键字段
+
+> `@TableField`
+
+- 描述：字段注解（非主键）
 
 ```java
 // 实体类
@@ -343,20 +348,20 @@ public class User {
 |type|Enum|否|IdType.NONE|指定主键类型|
 
 
-**IdType 可选参数：**
+> **IdType 可选参数：**
 
 |值|描述|
 |-|-|
 |AUTO|数据库 ID 自增 (mysql配置主键自增长)|
 |ASSIGN_ID（默认）|分配 ID(主键类型为 Number(Long )或 String)(since 3.3.0),使用接口`IdentifierGenerator`的方法`nextId`(默认实现类为`DefaultIdentifierGenerator`雪花算法)|
 
-雪花算法生成的ID需使用 Long 或 String 类型
+> 雪花算法生成的ID需使用 Long 或 String 类型
 
 ## 逻辑删除
 
 逻辑删除：通过更改记录的状态或添加标记字段来模拟删除操作
 
-**逻辑删除字段**
+> **逻辑删除字段**
 
 - 数据库
 
@@ -387,7 +392,7 @@ public class User {
 
 **版本号/时间戳**：为数据添加一个版本号或时间戳字段，每次更新数据时，比较当前版本号或时间戳与期望值是否一致，若一致则更新成功，否则表示数据已被修改，需要进行冲突处理
 
-- 添加版本号拦截器
+> **添加版本号拦截器**
 
 ```java
 @Bean
@@ -399,22 +404,24 @@ public MybatisPlusInterceptor mybatisPlusInterceptor() {
 }
 ```
 
-- Version 字段
-    - 数据库表
+> **Version 字段**
 
-    ```sql
-    ALTER TABLE USER ADD VERSION INT DEFAULT 1 ;  # int 类型 乐观锁字段
-    ```
-    - 实体类：`@Version`注解
+- 数据库表
 
-    ```java
-    @Version
-    private Integer version;
-    ```
+```sql
+ALTER TABLE USER ADD VERSION INT DEFAULT 1 ;  # int 类型 乐观锁字段
+```
+
+- 实体类：`@Version`注解
+
+```java
+@Version
+private Integer version;
+```
 
 ## 防止全表更新/删除
 
-- 添加拦截器
+> **添加拦截器**
 
 ```java
 @Bean

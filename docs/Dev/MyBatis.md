@@ -1,11 +1,13 @@
 # MyBatis 笔记
 
+[TOC]
+
 ## 实现
 
 - JDBC：Dao层（Java代码+SQL语句）
 - MyBatis：Mapper接口（Java代码）+MapperXML文件（SQL语句）
 
-**Mapper接口**
+> **Mapper接口**
 
 ```java
 // Mapper接口文件
@@ -24,7 +26,7 @@ public interface EmployeeMapper {
 }
 ```
 
-**MapperXML配置**
+> **MapperXML配置**
 
 ```xml
 <!-- MapperXML文件 -->
@@ -53,7 +55,7 @@ public interface EmployeeMapper {
 - 方法的参数和SQL的参数一致
 - 接口的全类名和映射配置文件的名称空间一致
 
-**具体调用**
+> **具体调用**
 
 ```java
 //1.读取外部配置文件
@@ -133,9 +135,9 @@ public MapperScannerConfigurer mapperScannerConfigurer(){
 - 增删改操作返回受影响的行数，使用int / long类型接收
 - 查询操作返回查询结果
 
+> **返回类型**
 
-
-返回类型：resultType = "全限定符 ｜ 别名 ｜ 如果是返回集合类型，写范型类型即可"
+resultType = "全限定符 ｜ 别名 ｜ 如果是返回集合类型，写范型类型即可"
 
 - 若返回Map，resultType = “map”
 - 若返回List，resultType 为泛型类型
@@ -151,7 +153,7 @@ public MapperScannerConfigurer mapperScannerConfigurer(){
 
 ## 动态语句
 
-- where / if 标签
+> **where / if 标签**
 
 ```sql
 <where>
@@ -164,7 +166,7 @@ public MapperScannerConfigurer mapperScannerConfigurer(){
     </where>
 ```
 
-- set 标签
+> **set 标签**
 
 ```sql
 <!-- 使用set标签动态管理set子句，并且动态去掉两端多余的逗号 -->
@@ -178,10 +180,11 @@ public MapperScannerConfigurer mapperScannerConfigurer(){
 </set>
 ```
 
-- choose / when / otherwise 标签
-    - 遇到的第一个满足条件的分支会被采纳
-    - 被采纳分支后面的分支都将不被考虑
-    - 如果所有的when分支都不满足，那么就执行otherwise分支
+> **choose / when / otherwise 标签**
+
+- 遇到的第一个满足条件的分支会被采纳
+- 被采纳分支后面的分支都将不被考虑
+- 如果所有的when分支都不满足，那么就执行otherwise分支
 
 ```sql
 <choose>
@@ -191,13 +194,14 @@ public MapperScannerConfigurer mapperScannerConfigurer(){
 </choose>
 ```
 
-- foreach 标签
-    - collection属性：要遍历的集合
-    - item属性：遍历集合的过程中能得到每一个具体对象，在item属性中设置一个名字，将来通过这个名字引用遍历出来的对象
-    - separator属性：指定当foreach标签的标签体重复拼接字符串时，各个标签体字符串之间的分隔符
-    - open属性：指定整个循环把字符串拼好后，字符串整体的前面要添加的字符串
-    - close属性：指定整个循环把字符串拼好后，字符串整体的后面要添加的字符串
-    - index属性：这里起一个名字，便于后面引用。遍历List集合，这里能够得到List集合的索引值；遍历Map集合，这里能够得到Map集合的key
+> **foreach 标签**
+
+- collection属性：要遍历的集合
+- item属性：遍历集合的过程中能得到每一个具体对象，在item属性中设置一个名字，将来通过这个名字引用遍历出来的对象
+- separator属性：指定当foreach标签的标签体重复拼接字符串时，各个标签体字符串之间的分隔符
+- open属性：指定整个循环把字符串拼好后，字符串整体的前面要添加的字符串
+- close属性：指定整个循环把字符串拼好后，字符串整体的后面要添加的字符串
+- index属性：这里起一个名字，便于后面引用。遍历List集合，这里能够得到List集合的索引值；遍历Map集合，这里能够得到Map集合的key
 
 ```sql
 <foreach collection="empList" item="emp" separator="," open="values" index="myIndex">

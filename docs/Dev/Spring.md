@@ -72,6 +72,7 @@ iocContainerAnnotation.refresh();
 ```
 
 > **第三方类**
+
 - 无法使用@Component
 - xml方式：使用<bean>
 - 配置类方式：使用方法返回值+@Bean注解
@@ -193,24 +194,29 @@ public Object manageTransaction(ProceedingJoinPoint joinPoint) {
 
 ### 事务属性
 
-- 只读
+> **只读**
+
 ```java
 @Transactional(readOnly = true)
 ```
 
-- 超时时间
+> **超时时间**
+
 ```java
 // 单位：秒
 // 默认: -1 永不超时
 @Transactional(readOnly = false,timeout = 3)
 ```
 
-- 事务异常
-  - 默认只针对运行时异常回滚，编译时异常不回滚
-  - rollbackFor：指定哪些异常才会回滚，默认是 RuntimeException and Error
-  - noRollbackFor：指定哪些异常不会回滚, 默认没有指定,如果指定,应该在rollbackFor的范围内
+> **事务异常**
 
-- 事务隔离级别：isolation
-- 事务传播：propagation
-  - REQUIRED 默认值，如果父方法有事务，就加入，如果没有就新建自己独立
-  - REQUIRES_NEW：不管父方法是否有事务，我都新建事务，都是独立的
+- 默认只针对运行时异常回滚，编译时异常不回滚
+- rollbackFor：指定哪些异常才会回滚，默认是 RuntimeException and Error
+- noRollbackFor：指定哪些异常不会回滚, 默认没有指定,如果指定,应该在rollbackFor的范围内
+
+> **事务隔离级别**：isolation
+
+> **事务传播**：propagation
+
+- REQUIRED 默认值，如果父方法有事务，就加入，如果没有就新建自己独立
+- REQUIRES_NEW：不管父方法是否有事务，我都新建事务，都是独立的

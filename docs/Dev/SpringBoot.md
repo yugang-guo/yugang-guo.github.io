@@ -1,5 +1,7 @@
 # SpringBoot 笔记
 
+[TOC]
+
 ## 启动类
 
 在启动类上添加注解`@SpringBootApplication` = `@Configuration` + `@ComponentScan` + `@EnableAutoConfiguration`
@@ -43,7 +45,7 @@ public class DataSourceConfigurationProperties {
 
 ## 整合SpringMVC
 
-Web配置参数：
+> **Web配置参数：**
 
 - `server.port`：端口号，默认为8080
 - `server.servlet.context-path`：应用程序的上下文路径，默认为空
@@ -51,18 +53,18 @@ Web配置参数：
 - `spring.resources.static-locations`：自定义静态资源的位置，配置后会覆盖默认位置
 - `spring.http.encoding.charset` `spring.http.encoding.enabled`：HTTP请求和相应的字符编码
 
-默认的静态资源路径
+> **默认的静态资源路径**
 
 - `classpath:/META-INF/resources/`
 - `classpath:/resources/`
 - `classpath:/static/`
 - `classpath:/public/`
 
-拦截器：正常声明拦截器类和配置拦截器，需保证拦截器配置类在启动类的同包或子包下
+> **拦截器**：正常声明拦截器类和配置拦截器，需保证拦截器配置类在启动类的同包或子包下
 
 ## 整合MyBatis
 
-步骤：
+> **步骤：**
 
 - 导入依赖
 - `application.yml`配置数据源
