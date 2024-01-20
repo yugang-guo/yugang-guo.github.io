@@ -1,5 +1,7 @@
 # Spring 笔记
 
+[TOC]
+
 ## IoC
 
 ### 实现
@@ -15,22 +17,26 @@ List<String> userList = service.getUsernameList();
 
 ### 注解
 
-Bean注解
+> **Bean注解**
+
 - @Component 普通组件Bean
   - @Controller 控制层
   - @Service 业务层
   - @Repository 持久化层
 
-Bean id属性
+> **Bean id属性**
+
 - 默认为类名首字母小写
 - value属性指定：@Controller(value = "id")
 - 注解只有一个属性时，value可省略：@Controller("id")
 
-周期方法
+> **周期方法**
+
 - PostConstruct 初始化方法
 - PreDestroy 销毁方法
 
-Bean属性赋值
+> **Bean属性赋值**
+
 - 引用类型
   - @Autowired：自动装配，不需要setter方法
   - 位置：成员变量、构造器、setter方法
@@ -43,17 +49,20 @@ Bean属性赋值
 
 ### 配置类
 
-Spring配置类注解
-- @Configuration：标记配置类
-- @ComponentScan(basePackages = {"包","包"})：配置扫描包
-- @PropertySource("classpath:配置文件地址")：读取外部配置文件
+> **Spring配置类注解**
 
-创建IoC容器
+  - @Configuration：标记配置类
+  - @ComponentScan(basePackages = {"包","包"})：配置扫描包
+  - @PropertySource("classpath:配置文件地址")：读取外部配置文件
+
+> **创建IoC容器**
+
 ```java
 ApplicationContext iocContainerAnnotation = new AnnotationConfigApplicationConte(配置类名.class);
 ```
 
-无参构造实例化IoC容器
+> **无参构造实例化IoC容器**
+
 ```java
 ApplicationContext iocContainerAnnotation = new AnnotationConfigApplicationConte();
 //外部设置配置类
@@ -62,18 +71,19 @@ iocContainerAnnotation.register(配置类名.class);
 iocContainerAnnotation.refresh();
 ```
 
-第三方类
+> **第三方类**
 - 无法使用@Component
 - xml方式：使用<bean>
 - 配置类方式：使用方法返回值+@Bean注解
 
-@Bean注解
+> **@Bean注解**
+
 - Bean id：@Bean("name")，省略时默认为方法名
 - 初始化方法：@Bean(initMethod = "init")
 - 销毁方法：@Bean(destroyMethod = "cleanup")
 - 作用域：@Scope("prototype")，默认为singleton
 
-@Import：允许从另一个配置类加载 @Bean 定义
+> @Import：允许从另一个配置类加载 @Bean 定义
 
 ## AOP 面向切面编程
 
@@ -89,7 +99,8 @@ iocContainerAnnotation.refresh();
 
 ### 通知
 
-- JoinPoint作为通知方法的形参
+> **JoinPoint作为通知方法的形参**
+
 ```java
 // 1.通过JoinPoint对象获取目标方法签名对象
 Signature signature = joinPoint.getSignature();
@@ -102,7 +113,9 @@ String declaringTypeName = signature.getDeclaringTypeName();
 // 3.通过JoinPoint对象获取外界调用目标方法时传入的实参列表
 Object[] args = joinPoint.getArgs();
 ```
-- 通知方法的返回值：返回通知
+
+> **通知方法的返回值：返回通知**
+
 ```java
 @AfterReturning(
         value = "execution(public int com.atguigu.aop.api.Calculator.add(int,int))",
@@ -110,7 +123,9 @@ Object[] args = joinPoint.getArgs();
 )
 public void printLogAfterCoreSuccess(JoinPoint joinPoint, Object targetMethodReturnValue)
 ```
-- 异常对象捕捉：异常通知
+
+> **异常对象捕捉：异常通知**
+
 ```java
 @AfterThrowing(
         value = "execution(public int com.atguigu.aop.api.Calculator.add(int,int))",
@@ -119,11 +134,13 @@ public void printLogAfterCoreSuccess(JoinPoint joinPoint, Object targetMethodRet
 public void printLogAfterCoreException(JoinPoint joinPoint, Throwable targetMethodException)
 ```
 
-- 切点表达式
-  - 示例：execution(public int com.atguigu.spring.aop.Calculator.div(int,int))
-  - 语法：execution(权限 返回值 包名.类名.方法名(参数列表))
+> **切点表达式**
 
-- 重用切点表达式
+- 示例：execution(public int com.atguigu.spring.aop.Calculator.div(int,int))
+- 语法：execution(权限 返回值 包名.类名.方法名(参数列表))
+
+> **重用切点表达式**
+
 ```java
 @Pointcut("execution(public int com.atguigu.aop.api.Calculator.add(int,int)))")
 public void declarPointCut() {} // 必须为无参数无返回值方法
@@ -132,7 +149,8 @@ public void declarPointCut() {} // 必须为无参数无返回值方法
 public void printLogBeforeCoreOperation(JoinPoint joinPoint)
 ```
 
-- 环绕通知
+> **环绕通知**
+
 ```java
 @Around(value = "com.atguigu.aop.aspect.AtguiguPointCut.transactionPointCut()")
 public Object manageTransaction(ProceedingJoinPoint joinPoint) {
@@ -153,7 +171,7 @@ public Object manageTransaction(ProceedingJoinPoint joinPoint) {
 }
 ```
 
-- 切面优先级：@Order(value)
+> 切面优先级：@Order(value)
 
 ## 声明式事务
 

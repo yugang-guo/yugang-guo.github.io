@@ -121,7 +121,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper,User> implements Use
 
 ### CRUD 方法
 
-1. **保存**
+- 保存:
 
 ```java
 // 插入一条记录（选择字段，策略插入）
@@ -132,7 +132,7 @@ boolean saveBatch(Collection<T> entityList);
 boolean saveBatch(Collection<T> entityList, int batchSize);
 ```
 
-2. **修改或者保存：**
+- 修改或者保存：
 
 ```java
 // TableId 注解存在更新记录，否插入一条记录
@@ -145,7 +145,7 @@ boolean saveOrUpdateBatch(Collection<T> entityList);
 boolean saveOrUpdateBatch(Collection<T> entityList, int batchSize);
 ```
 
-3. **移除：**
+- 移除：
 
 ```java
 // 根据 queryWrapper 设置的条件，删除记录
@@ -158,7 +158,7 @@ boolean removeByMap(Map<String, Object> columnMap);
 boolean removeByIds(Collection<? extends Serializable> idList);
 ```
 
-4. **更新：**
+- 更新：
 
 ```java
 // 根据 UpdateWrapper 条件，更新记录 需要设置sqlset
@@ -173,7 +173,7 @@ boolean updateBatchById(Collection<T> entityList);
 boolean updateBatchById(Collection<T> entityList, int batchSize);
 ```
 
-5. **数量：**
+- 数量：
 
 ```java 
 // 查询总记录数
@@ -182,7 +182,7 @@ int count();
 int count(Wrapper<T> queryWrapper);
 ```
 
-6. **查询：**
+- 查询：
 
 ```java
 // 根据 ID 查询
@@ -197,7 +197,7 @@ Map<String, Object> getMap(Wrapper<T> queryWrapper);
 <V> V getObj(Wrapper<T> queryWrapper, Function<? super Object, V> mapper);
 ```
 
-7. **集合：**
+- 集合：
 
 ```java
 // 查询所有
@@ -224,7 +224,7 @@ List<Object> listObjs(Wrapper<T> queryWrapper);
 
 ### 分页查询
 
-1. 添加分页拦截器
+- 添加分页拦截器
 
 ```java
 @Bean
@@ -236,7 +236,7 @@ public MybatisPlusInterceptor mybatisPlusInterceptor() {
 }
 ```
 
-2. Service 方法：调用 Mapper 方法
+- Service 方法：调用 Mapper 方法
 
 ```java
 //1.条件构造器
@@ -267,7 +267,7 @@ pageInfoMap.put("pageInfo",pageInfo);
 return Result.ok(pageInfoMap);
 ```
 
-3. Mapper 方法
+- Mapper 方法
 
 ```java
 //传入参数携带Ipage接口
