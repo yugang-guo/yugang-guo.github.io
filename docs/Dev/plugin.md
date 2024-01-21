@@ -2,13 +2,34 @@
 
 [TOC]
 
+## Maven
+
+### GAVP
+
+- Group ID：项目所属的组织或包，通常为组织的域名倒序
+- Artifact ID：项目的唯一标识符，通常为项目名
+- Version：项目版本号
+- Packagng：项目打包方式：jar、war、pom，默认为jar
+
+```xml
+<!-- pom.xml -->
+<project>
+    <groupId>com.example</groupId>
+    <artifactId>my-project</artifactId>
+    <version>1.0.0</version>
+    <packaging>jar</packaging>
+    <!-- 其他配置 -->
+</project>
+
+```
+
 ## JWT
 
 Java Web Token（JWT）：生成,校验,解析等动作Token的技术
 
 token：一串随机生成的字符或数字，用于验证用户的身份或授权用户对特定资源的访问，
 
-1. 导入依赖
+> **导入依赖**
 
 ```xml
 <dependency>
@@ -24,7 +45,7 @@ token：一串随机生成的字符或数字，用于验证用户的身份或授
 </dependency>
 ```
 
-2. 配置（application.yaml）
+> **配置**（application.yaml）
 
 ```yaml
 #jwt配置
@@ -34,7 +55,7 @@ jwt:
     tokenSignKey: headline123456  #当前程序签名秘钥 自定义
 ```
 
-3. JWT 工具类
+> **JWT 工具类**
 
 ```java
 @Data
@@ -82,5 +103,68 @@ public class JwtHelper {
         }
     }
 }
+```
+
+## Lombok
+
+通过添加注解来简化java代码的编写
+
+- `@Getter` `@Setter`：自动生成 getter 和 setter 方法
+- `@ToString`：自动生成 toString 方法
+- `@NoArgsConstructor` `@AllArgsConstructor` `@RequiredArgsConstructor`：自动生成无参构造函数、全参构造函数、要求字段的构造函数
+- `@EqualsAndHashCode`：自动生成 equals 和 hashCode 方法
+- `@Data`：包含 `@ToString`, `@EqualsAndHashCode`, `@Getter`, `@Setter` 和 `@RequiredArgsConstructor` 的组合注解。
+- `@Builder`：自动生成构造器方法
+
+```java
+@Builder
+public class Example {
+    private String name;
+    private int age;
+
+    public static void main(String[] args) {
+        Example example = Example.builder()
+                                 .name("John")
+                                 .age(25)
+                                 .build();
+    }
+}
+```
+
+## FastSON
+
+阿里巴巴JSON 处理库，用于在 java 代码中处理 JSON 数据
+
+> **导入依赖**
+
+```xml
+<!-- pro.xml -->
+<dependency>
+    <groupId>com.alibaba</groupId>
+    <artifactId>fastjson</artifactId>
+    <version>1.2.79</version> <!-- 使用最新版本 -->
+</dependency>
+```
+
+> **使用**
+
+- 引入 JSON 包
+
+```java
+import com.alibaba.fastjson.JSON;
+```
+
+- Java实体类 -> JSON字符串
+
+```java
+User user = new User("John Doe", 25);
+String jsonString = JSON.toJSONString(user);
+```
+
+- JSON字符串 -> Java实体类
+
+```java
+String jsonString = "{\"name\":\"John Doe\",\"age\":25}";
+User user = JSON.parseObject(jsonString, User.class);
 ```
 
