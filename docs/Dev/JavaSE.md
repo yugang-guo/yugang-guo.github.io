@@ -231,7 +231,7 @@ int size();
 int search(Object item);
 ```
 
-## Queue
+### Queue
 
 ```java
 Queue<Object> que = new LinkedList<>();
