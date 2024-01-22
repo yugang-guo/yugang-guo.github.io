@@ -8,6 +8,7 @@ site_description: 郭玉刚的个人主页
 nav:
   - 博客:
     - Blog/index.md
+    - 构建个人主页: Blog/buildPersonPage.md
   - 开发:
     - Dev/index.md
     - Java: 
@@ -113,3 +114,4 @@ extra_css:
   - https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/katex.min.css
   - mkdocs/css/no-footer.css # 不使用底部的翻页
   - mkdocs/css/unordered-list-symbols.css # multiplt unordered list symbols
+  
