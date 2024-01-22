@@ -143,8 +143,18 @@ Collections.sort(arr);
 Arrays.sort(arr);
 
 // ArrayList -> 数组
-int[] nums = new int[arr.size()];
-arr.toArray(nums);
+// 引用类型
+List<String> arr = new ArrayList<>();
+String[] nums = arr.toArray(new String[0]);
+
+// ArrayList -> 数组
+// 非引用类型
+List<Integer> arr = new ArrayList<>();
+int[] nums = arr.stream().mapToInt().toArray();
+
+// 数组 -> ArrayList
+String[] nums = {"1", "2"};
+List<String> arr = Arrays.asList(nums);
 ```
 
 ### Set
@@ -219,4 +229,19 @@ int size();
 
 // 元素在栈中的位置(不存在返回-1，栈顶为1)
 int search(Object item);
+```
+
+## Queue
+
+```java
+Queue<Object> que = new LinkedList<>();
+
+// 队尾添加元素
+que.offer(Object e);
+
+// 获取并删除队头元素，队列为空返回 null
+Object <- que.poll();
+
+// 获取队头元素，队列为空返回 null
+Object <- que.peek();
 ```
