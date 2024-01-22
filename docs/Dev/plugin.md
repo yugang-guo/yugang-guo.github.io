@@ -131,7 +131,7 @@ public class Example {
 }
 ```
 
-## FastSON
+## FastJSON
 
 阿里巴巴JSON 处理库，用于在 java 代码中处理 JSON 数据
 
