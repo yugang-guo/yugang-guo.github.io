@@ -86,6 +86,9 @@ String <- s.trim();
 // == 比较的是字符串的引用是否相等，equals比较的是内容是否相等
 boolean <- s.equals(str);
 
+// 范围for循环遍历字符串
+for(char ch : s.toCharArray());
+
 -----------------------------------------------------------
 
 // 可变字符串
@@ -109,6 +112,9 @@ int[] nums;
 
 // 数组长度
 int <- nums.length;
+
+// 判断两数组a, b是否相等
+Arrays.equals(a, b);
 ```
 
 ### List
@@ -244,4 +250,29 @@ Object <- que.poll();
 
 // 获取队头元素，队列为空返回 null
 Object <- que.peek();
+```
+
+### PriorityQueue
+
+```java
+// 默认升序排列
+PriorityQueue<Object> pq = new PriorityQueue<>();
+
+// 添加元素
+pq.offer(Object c);
+
+// 弹出队头元素
+pq.poll();
+
+// 返回对首元素
+pq.peek();
+
+// 移除指定元素
+pq.remove(Object c);
+
+// 清空队列
+pq.clear();
+
+// 返回队列大小
+pq.size();
 ```
