@@ -275,4 +275,18 @@ pq.clear();
 
 // 返回队列大小
 pq.size();
+
+// 定义排序
+PriorityQueue<Object> pq = new PriorityQueue<>(new COmparator<Object>(){
+  @override
+  public int compare(Object a, Object b) {
+    // 从小到大
+    return a - b;
+    return Integer.compare(a, b);
+
+    // 从大到小
+    return b - a;
+    return Integer.compare(b, a);
+  }
+});
 ```
