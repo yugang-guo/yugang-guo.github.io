@@ -1,0 +1,3470 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="郭玉刚的个人主页">
+      
+      
+        <meta name="author" content="郭玉刚">
+      
+      
+        <link rel="canonical" href="https://yugang-guo.github.io/Dev/webserver/">
+      
+      
+        <link rel="prev" href="../MySQL/">
+      
+      
+        <link rel="next" href="../git/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.46">
+    
+    
+      
+        <title>WebServer - 郭玉刚的个人主页</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.6f8fc17f.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/katex.min.css">
+    
+      <link rel="stylesheet" href="../../mkdocs/css/no-footer.css">
+    
+      <link rel="stylesheet" href="../../mkdocs/css/unordered-list-symbols.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="green" data-md-color-accent="orange">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#webserver" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../.." title="郭玉刚的个人主页" class="md-header__button md-logo" aria-label="郭玉刚的个人主页" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            郭玉刚的个人主页
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              WebServer
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="green" data-md-color-accent="orange"  aria-label="切换至夜间模式"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="切换至夜间模式" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="orange"  aria-label="切换至日间模式"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="切换至日间模式" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/yugang-guo/yugang-guo.github.io" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.7.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8M97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    yugang-guo.github.io
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../Blog/" class="md-tabs__link">
+          
+  
+    
+  
+  博客
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../" class="md-tabs__link">
+          
+  
+    
+  
+  开发
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../Lang/" class="md-tabs__link">
+          
+  
+    
+  
+  外语
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../Life/" class="md-tabs__link">
+          
+  
+    
+  
+  生活
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="郭玉刚的个人主页" class="md-nav__button md-logo" aria-label="郭玉刚的个人主页" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    郭玉刚的个人主页
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/yugang-guo/yugang-guo.github.io" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.7.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8M97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    yugang-guo.github.io
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_1" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../Blog/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    博客
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_1" id="__nav_1_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            博客
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Blog/buildPersonPage/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    构建个人主页
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    开发
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            开发
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Java
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            Java
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../JavaSE/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    JavaSE
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../JavaWeb/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    JavaWeb
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Spring/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Spring
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../SpringMVC/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    SpringMVC
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../MyBatis/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    MyBatis
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../SpringBoot/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    SpringBoot
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../MyBatis-Plus/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    MyBatis-Plus
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../plugin/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    插件
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_3" id="__nav_2_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    算法
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_3">
+            <span class="md-nav__icon md-icon"></span>
+            算法
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../DSA/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    数据结构与算法
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Hot100/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Leetcode Hot100
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../MySQL/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    数据库
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_5" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2_5" id="__nav_2_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    项目
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2_5">
+            <span class="md-nav__icon md-icon"></span>
+            项目
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    WebServer
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    WebServer
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. 系统编程入门
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. 系统编程入门">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      程序流程
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gcc" class="md-nav__link">
+    <span class="md-ellipsis">
+      GCC选项参数
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      库
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="库">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      静态库
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      动态库
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#makefile" class="md-nav__link">
+    <span class="md-ellipsis">
+      makefile
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cmake" class="md-nav__link">
+    <span class="md-ellipsis">
+      CMake
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#io" class="md-nav__link">
+    <span class="md-ellipsis">
+      I/O
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="I/O">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      文件指针
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#io_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      I/O函数
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      文件属性函数
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      目录函数
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      文件描述符函数
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      其他函数
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#shell" class="md-nav__link">
+    <span class="md-ellipsis">
+      Shell命令
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. 多进程
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. 多进程">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      进程
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pcb" class="md-nav__link">
+    <span class="md-ellipsis">
+      PCB进程控制块
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      进程状态
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="进程状态">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      三态模型
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      五态模型
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      七态模型
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      进程命令
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pid" class="md-nav__link">
+    <span class="md-ellipsis">
+      PID
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    <span class="md-ellipsis">
+      进程创建
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    <span class="md-ellipsis">
+      进程退出
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="进程退出">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    <span class="md-ellipsis">
+      孤儿进程
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_19" class="md-nav__link">
+    <span class="md-ellipsis">
+      僵尸进程
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_20" class="md-nav__link">
+    <span class="md-ellipsis">
+      进程回收
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ipc" class="md-nav__link">
+    <span class="md-ellipsis">
+      进程间通信（IPC）
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="进程间通信（IPC）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_21" class="md-nav__link">
+    <span class="md-ellipsis">
+      匿名管道
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fifo" class="md-nav__link">
+    <span class="md-ellipsis">
+      有名管道（FIFO）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_22" class="md-nav__link">
+    <span class="md-ellipsis">
+      内存映射
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_23" class="md-nav__link">
+    <span class="md-ellipsis">
+      信号
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_24" class="md-nav__link">
+    <span class="md-ellipsis">
+      共享内存
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_25" class="md-nav__link">
+    <span class="md-ellipsis">
+      守护进程
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. 多线程
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. 多线程">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_26" class="md-nav__link">
+    <span class="md-ellipsis">
+      线程
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_27" class="md-nav__link">
+    <span class="md-ellipsis">
+      线程操作函数
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_28" class="md-nav__link">
+    <span class="md-ellipsis">
+      线程属性
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_29" class="md-nav__link">
+    <span class="md-ellipsis">
+      线程同步
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="线程同步">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_30" class="md-nav__link">
+    <span class="md-ellipsis">
+      互斥量（互斥锁）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_31" class="md-nav__link">
+    <span class="md-ellipsis">
+      死锁
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_32" class="md-nav__link">
+    <span class="md-ellipsis">
+      读写锁
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_33" class="md-nav__link">
+    <span class="md-ellipsis">
+      生产者消费者模型
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_34" class="md-nav__link">
+    <span class="md-ellipsis">
+      条件变量
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_35" class="md-nav__link">
+    <span class="md-ellipsis">
+      信号量
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. 网络编程
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. 网络编程">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_36" class="md-nav__link">
+    <span class="md-ellipsis">
+      网络基础
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="网络基础">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_37" class="md-nav__link">
+    <span class="md-ellipsis">
+      端口
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-webserver" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. WebServer
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. WebServer">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_38" class="md-nav__link">
+    <span class="md-ellipsis">
+      日志
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_6" id="__nav_2_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    工具
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_6">
+            <span class="md-nav__icon md-icon"></span>
+            工具
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../git/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Git
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../Lang/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    外语
+  </span>
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            外语
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../Life/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    生活
+  </span>
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            生活
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. 系统编程入门
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. 系统编程入门">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      程序流程
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gcc" class="md-nav__link">
+    <span class="md-ellipsis">
+      GCC选项参数
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      库
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="库">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      静态库
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      动态库
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#makefile" class="md-nav__link">
+    <span class="md-ellipsis">
+      makefile
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cmake" class="md-nav__link">
+    <span class="md-ellipsis">
+      CMake
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#io" class="md-nav__link">
+    <span class="md-ellipsis">
+      I/O
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="I/O">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      文件指针
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#io_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      I/O函数
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      文件属性函数
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      目录函数
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      文件描述符函数
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      其他函数
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#shell" class="md-nav__link">
+    <span class="md-ellipsis">
+      Shell命令
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. 多进程
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. 多进程">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      进程
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pcb" class="md-nav__link">
+    <span class="md-ellipsis">
+      PCB进程控制块
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      进程状态
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="进程状态">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      三态模型
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      五态模型
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      七态模型
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      进程命令
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pid" class="md-nav__link">
+    <span class="md-ellipsis">
+      PID
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    <span class="md-ellipsis">
+      进程创建
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    <span class="md-ellipsis">
+      进程退出
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="进程退出">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    <span class="md-ellipsis">
+      孤儿进程
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_19" class="md-nav__link">
+    <span class="md-ellipsis">
+      僵尸进程
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_20" class="md-nav__link">
+    <span class="md-ellipsis">
+      进程回收
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ipc" class="md-nav__link">
+    <span class="md-ellipsis">
+      进程间通信（IPC）
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="进程间通信（IPC）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_21" class="md-nav__link">
+    <span class="md-ellipsis">
+      匿名管道
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fifo" class="md-nav__link">
+    <span class="md-ellipsis">
+      有名管道（FIFO）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_22" class="md-nav__link">
+    <span class="md-ellipsis">
+      内存映射
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_23" class="md-nav__link">
+    <span class="md-ellipsis">
+      信号
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_24" class="md-nav__link">
+    <span class="md-ellipsis">
+      共享内存
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_25" class="md-nav__link">
+    <span class="md-ellipsis">
+      守护进程
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. 多线程
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. 多线程">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_26" class="md-nav__link">
+    <span class="md-ellipsis">
+      线程
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_27" class="md-nav__link">
+    <span class="md-ellipsis">
+      线程操作函数
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_28" class="md-nav__link">
+    <span class="md-ellipsis">
+      线程属性
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_29" class="md-nav__link">
+    <span class="md-ellipsis">
+      线程同步
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="线程同步">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_30" class="md-nav__link">
+    <span class="md-ellipsis">
+      互斥量（互斥锁）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_31" class="md-nav__link">
+    <span class="md-ellipsis">
+      死锁
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_32" class="md-nav__link">
+    <span class="md-ellipsis">
+      读写锁
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_33" class="md-nav__link">
+    <span class="md-ellipsis">
+      生产者消费者模型
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_34" class="md-nav__link">
+    <span class="md-ellipsis">
+      条件变量
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_35" class="md-nav__link">
+    <span class="md-ellipsis">
+      信号量
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. 网络编程
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. 网络编程">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_36" class="md-nav__link">
+    <span class="md-ellipsis">
+      网络基础
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="网络基础">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_37" class="md-nav__link">
+    <span class="md-ellipsis">
+      端口
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-webserver" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. WebServer
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. WebServer">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_38" class="md-nav__link">
+    <span class="md-ellipsis">
+      日志
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+    <a href="https://github.com/yugang-guo/yugang-guo.github.io/edit/main/docs/Dev/webserver.md" title="编辑此页" class="md-content__button md-icon">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
+    </a>
+  
+  
+
+
+<h1 id="webserver">WebServer项目笔记<a class="headerlink" href="#webserver" title="Permanent link">&para;</a></h1>
+<h2 id="1">1. 系统编程入门<a class="headerlink" href="#1" title="Permanent link">&para;</a></h2>
+<h3 id="_1">程序流程<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h3>
+<ol>
+<li>预处理：生成预处理后的源代码(.i)，头文件展开、宏替换、删除注释。命令：-E</li>
+<li>编译：生成汇编代码(.s)。命令：-S</li>
+<li>汇编：生成目标代码(.o)。命令：-c</li>
+<li>链接：生成可执行程序(.exe .out)，将目标代码、库代码等链接在一起。命令：-o</li>
+</ol>
+<h3 id="gcc">GCC选项参数<a class="headerlink" href="#gcc" title="Permanent link">&para;</a></h3>
+<ol>
+<li>-E 预处理、-S 编译、-c 汇编、-o 链接</li>
+<li>-I：指定include包含文件的搜索目录</li>
+<li>-g：生成调试信息</li>
+<li>-D：编译的时候，指定一个宏</li>
+<li>-w：不生成任何警告信息</li>
+<li>-Wall：生成所有警告信息</li>
+<li>-On：n取0~3，表示编译器的优化级别，-O1为默认级别</li>
+<li>-l：编译时指定使用的库名</li>
+<li>-L：编译时搜索库的路径</li>
+<li>-fPIC/fpic：生成与位置无关的代码</li>
+<li>-shared：生成共享目标文件，通常用于建立动态库</li>
+<li>-std：指定C方言，如-std=c99</li>
+</ol>
+<h3 id="_2">库<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<p>静态库：在链接阶段被复制到程序中</p>
+<p>动态库（共享库）：在程序运行时，由系统动态加载到内存</p>
+<h4 id="_3">静态库<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
+<p><strong>命名</strong></p>
+<p>Linux：libxxx.a</p>
+<p>Windows：libxxx.lib</p>
+<p>// lib：前缀（固定），xxx：库名，.a .lib：后缀（固定）</p>
+<p><strong>制作</strong></p>
+<p>使用ar工具（archive）将.o文件打包</p>
+<div class="highlight"><span class="filename">Bash</span><pre><span></span><code>ar<span class="w"> </span>rcs<span class="w"> </span>libxxx.a<span class="w"> </span>xxx.o<span class="w"> </span>xxx.o
+</code></pre></div>
+<h4 id="_4">动态库<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
+<p><strong>命名</strong></p>
+<p>Linux：libxxx.so</p>
+<p>Windows：libxxx.dll</p>
+<p><strong>制作</strong></p>
+<p>得到.o文件，得到与位置无关的代码</p>
+<div class="highlight"><span class="filename">Bash</span><pre><span></span><code>gcc<span class="w"> </span>-c<span class="w"> </span>-fpic<span class="w"> </span>xxx.c<span class="w"> </span>xxx.c
+</code></pre></div>
+<p>得到动态库</p>
+<div class="highlight"><span class="filename">Bash</span><pre><span></span><code>gcc<span class="w"> </span>-shared<span class="w"> </span>xxx.o<span class="w"> </span>xxx.o<span class="w"> </span>-o<span class="w"> </span>libxxx.so
+</code></pre></div>
+<p><strong>加载</strong></p>
+<p>ldd命令：检查动态库的依赖关系</p>
+<h3 id="makefile">makefile<a class="headerlink" href="#makefile" title="Permanent link">&para;</a></h3>
+<p><strong>规则</strong></p>
+<div class="highlight"><span class="filename">Bash</span><pre><span></span><code>目标：依赖
+<span class="w">    </span>命令
+
+<span class="c1"># 自定义变量</span>
+<span class="nv">变量名</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>变量值
+<span class="nv">var</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>hello.cpp
+使用<span class="w"> </span><span class="k">$(</span>var<span class="k">)</span>
+
+<span class="c1"># 预定义变量</span>
+CC<span class="w"> </span>:<span class="w"> </span>C编译器名称
+CXX<span class="w"> </span>:<span class="w"> </span>C++编译器名称
+CXXFLAGS<span class="w"> </span>:<span class="w"> </span>C++编译选项
+<span class="nv">$@</span><span class="w"> </span>:<span class="w"> </span>目标
+$&lt;<span class="w"> </span>:<span class="w"> </span>第一个依赖
+$^<span class="w"> </span>:<span class="w"> </span>所有依赖
+%<span class="w"> </span>:<span class="w"> </span>通配符，匹配一个字符串
+</code></pre></div>
+<p><strong>使用</strong></p>
+<div class="highlight"><span class="filename">Bash</span><pre><span></span><code><span class="m">1</span>.<span class="w"> </span>touch<span class="w"> </span>Makefile
+<span class="m">2</span>.<span class="w"> </span>make
+<span class="m">3</span>.<span class="w"> </span>./out
+<span class="m">3</span>.<span class="w"> </span>make<span class="w"> </span>clean
+</code></pre></div>
+<p><strong>示例</strong>
+include/
+    head.h
+src/
+    head.cpp
+main.cpp</p>
+<div class="highlight"><span class="filename">Makefile</span><pre><span></span><code><span class="nv">CXX</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>g++
+<span class="nv">CXXFLAGS</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>-c
+<span class="nv">TARGET</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>out
+<span class="nv">OBJ</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>main.o<span class="w"> </span>head.o
+
+<span class="nf">$(TARGET)</span><span class="o">:</span><span class="w"> </span><span class="k">$(</span><span class="nv">OBJ</span><span class="k">)</span>
+<span class="w">    </span><span class="k">$(</span>CXX<span class="k">)</span><span class="w"> </span><span class="k">$(</span>OBJ<span class="k">)</span><span class="w"> </span>-o<span class="w"> </span><span class="k">$(</span>TARGET<span class="k">)</span>
+
+<span class="nf">main.o</span><span class="o">:</span><span class="w"> </span><span class="n">main</span>.<span class="n">cpp</span>
+<span class="w">    </span><span class="k">$(</span>CXX<span class="k">)</span><span class="w"> </span>main.cpp<span class="w"> </span><span class="k">$(</span>CXXFLAGS<span class="k">)</span><span class="w"> </span>-I<span class="w"> </span>include
+
+<span class="nf">head.o</span><span class="o">:</span><span class="w"> </span><span class="n">head</span>.<span class="n">cpp</span>
+<span class="w">    </span><span class="k">$(</span>CXX<span class="k">)</span><span class="w"> </span>head.cpp<span class="w"> </span><span class="k">$(</span>CXXFLAGS<span class="k">)</span><span class="w"> </span>-I<span class="w"> </span>include
+
+<span class="nf">.PHONY</span><span class="o">:</span><span class="w"> </span><span class="n">clean</span>
+<span class="nf">clean</span><span class="o">:</span>
+<span class="c">    # windows</span>
+<span class="w">    </span>del<span class="w"> </span>*.o<span class="w"> </span><span class="k">$(</span>TARGET<span class="k">)</span><span class="w"> </span>-rf
+<span class="c">    # Linux</span>
+<span class="w">    </span>rm<span class="w"> </span>-f<span class="w"> </span>*.o<span class="w"> </span><span class="k">$(</span>TARGET<span class="k">)</span>
+</code></pre></div>
+<h3 id="cmake">CMake<a class="headerlink" href="#cmake" title="Permanent link">&para;</a></h3>
+<p><strong>使用</strong>
+<div class="highlight"><span class="filename">Bash</span><pre><span></span><code><span class="m">1</span>.<span class="w"> </span>touch<span class="w"> </span>CMakeLists.txt
+<span class="m">2</span>.<span class="w"> </span>mkdir<span class="w"> </span>build
+<span class="m">3</span>.<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>build
+<span class="m">4</span>.<span class="w"> </span>cmake<span class="w"> </span>..
+<span class="m">5</span>.<span class="w"> </span>make
+<span class="m">6</span>.<span class="w"> </span>./out
+<span class="m">7</span>.<span class="w"> </span>rm<span class="w"> </span>-rf<span class="w"> </span>build
+<span class="c1"># Windows下默认使用MSVC编译，可指定MinGW编译器 cmake -G &#39;MinGW Makefiles&#39;</span>
+</code></pre></div></p>
+<p><strong>CMakeLists.txt</strong></p>
+<div class="highlight"><span class="filename">CMake</span><pre><span></span><code><span class="nb">cmake_minimum_required</span><span class="p">(</span><span class="s">VERSION</span><span class="w"> </span><span class="s">3.10</span><span class="p">)</span>
+
+<span class="nb">project</span><span class="p">(</span><span class="s">out</span><span class="p">)</span>
+
+<span class="nb">include_directories</span><span class="p">(</span><span class="s">include</span><span class="p">)</span>
+
+<span class="nb">add_executable</span><span class="p">(</span><span class="s">out</span><span class="w"> </span><span class="s">main.cpp</span><span class="w"> </span><span class="s">head.cpp</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="io">I/O<a class="headerlink" href="#io" title="Permanent link">&para;</a></h3>
+<h4 id="_5">文件指针<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
+<p>FILE* fp fopen()</p>
+<p>fp为结构体指针，包含三部分：文件描述符（int fd）、文件读写指针、I/O缓冲区（内存地址）</p>
+<h4 id="io_1">I/O函数<a class="headerlink" href="#io_1" title="Permanent link">&para;</a></h4>
+<div class="highlight"><span class="filename">C++</span><pre><span></span><code><span class="cm">/* 打开文件</span>
+<span class="cm">pathname: 文件路径</span>
+<span class="cm">flags: 操作权限设置</span>
+<span class="cm">    必选: O_RDONLY（只读）、O_WRONLY（只写）、O_RDWR（读写）</span>
+<span class="cm">    可选: O_CREAT（创建）</span>
+<span class="cm">return: </span>
+<span class="cm">    成功: 文件描述符fd</span>
+<span class="cm">    失败: -1 */</span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">open</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">pathname</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">flags</span><span class="p">);</span>
+
+<span class="cm">/* 创建文件</span>
+<span class="cm">mode: 八进制数，文件权限 */</span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">open</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">pathname</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">flags</span><span class="p">,</span><span class="w"> </span><span class="kt">mode_t</span><span class="w"> </span><span class="n">mode</span><span class="p">)</span>
+
+<span class="cm">/* 关闭文件</span>
+<span class="cm">fd: 文件描述符</span>
+<span class="cm">return:</span>
+<span class="cm">    0: 成功</span>
+<span class="cm">    -1: 失败 */</span>
+<span class="kt">int</span><span class="w"> </span><span class="n">close</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">fd</span><span class="p">);</span>
+
+<span class="cm">/* 输出错误</span>
+<span class="cm">s: 用户描述。</span>
+<span class="cm">输出内容 s: 错误信息</span>
+<span class="cm">void perror(const char* s);</span>
+
+<span class="cm">/* 读文件</span>
+<span class="cm">buf: 读取数据后存放的缓冲区，数组地址（传出参数）</span>
+<span class="cm">count: buf的大小</span>
+<span class="cm">return: </span>
+<span class="cm">    &gt;0: 读取到的字节数</span>
+<span class="cm">    =0: 表示文件已读取完</span>
+<span class="cm">    &lt;0: 失败 */</span>
+<span class="kt">ssize_t</span><span class="w"> </span><span class="nf">read</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">fd</span><span class="p">,</span><span class="w"> </span><span class="kt">void</span><span class="o">*</span><span class="w"> </span><span class="n">buf</span><span class="p">,</span><span class="w"> </span><span class="kt">size_t</span><span class="w"> </span><span class="n">count</span><span class="p">);</span>
+
+<span class="cm">/* 写文件</span>
+<span class="cm">buf: 写入数据的缓冲区</span>
+<span class="cm">count：写入数据的实际大小</span>
+<span class="cm">return:</span>
+<span class="cm">    成功：写入的字节数</span>
+<span class="cm">    失败：-1 */</span>
+<span class="kt">ssize_t</span><span class="w"> </span><span class="nf">write</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">fd</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">void</span><span class="o">*</span><span class="w"> </span><span class="n">buf</span><span class="p">,</span><span class="w"> </span><span class="kt">size_t</span><span class="w"> </span><span class="n">count</span><span class="p">);</span>
+
+<span class="cm">/* 设置文件指针</span>
+<span class="cm">offset：偏移量</span>
+<span class="cm">whence：</span>
+<span class="cm">    SEEK_SET：设置文件指针的偏移量 = offset</span>
+<span class="cm">    SEEK_CUR：设置文件指针的偏移量 = 当前位置 + offset</span>
+<span class="cm">    SEEK_END：设置文件指针的偏移量 = 文件大小 + offset</span>
+<span class="cm">return：文件指针的位置 */</span>
+<span class="kt">off_t</span><span class="w"> </span><span class="nf">lseek</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">fd</span><span class="p">,</span><span class="w"> </span><span class="kt">off_t</span><span class="w"> </span><span class="n">offset</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">whence</span><span class="p">);</span>
+
+<span class="cm">/* 文件状态信息</span>
+<span class="cm">pathname：文件路径</span>
+<span class="cm">statbuf：传出参数，用于保存文件状态信息</span>
+<span class="cm">return：</span>
+<span class="cm">    成功：0</span>
+<span class="cm">    失败：-1 */</span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">stat</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">pathname</span><span class="p">,</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">stat</span><span class="o">*</span><span class="w"> </span><span class="n">statbuf</span><span class="p">);</span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">lstat</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">pathname</span><span class="p">,</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">stat</span><span class="o">*</span><span class="w"> </span><span class="n">statbuf</span><span class="p">);</span>
+</code></pre></div>
+<h4 id="_6">文件属性函数<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
+<div class="highlight"><span class="filename">C++</span><pre><span></span><code><span class="cm">/* 判断文件是否有某个权限 / 判断文件是否存在</span>
+<span class="cm">mode：权限</span>
+<span class="cm">    R_OK：是否有读权限</span>
+<span class="cm">    W_OK：是否有写权限</span>
+<span class="cm">    X_OK：是否有执行权限</span>
+<span class="cm">    F_OK：是否存在</span>
+<span class="cm">return：</span>
+<span class="cm">    成功：0</span>
+<span class="cm">    失败：-1 */</span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">access</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">pathname</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">mode</span><span class="p">);</span>
+
+<span class="cm">/* 修改文件权限</span>
+<span class="cm">mode：修改的文件权限，八进制数</span>
+<span class="cm">return：</span>
+<span class="cm">    成功：0</span>
+<span class="cm">    失败：-1 */</span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">chmod</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">filename</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">mode</span><span class="p">);</span>
+
+<span class="cm">/* 修改文件所有者、所在组 */</span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">chown</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">path</span><span class="p">,</span><span class="w"> </span><span class="kt">uid_t</span><span class="w"> </span><span class="n">owner</span><span class="p">,</span><span class="w"> </span><span class="kt">gid_t</span><span class="w"> </span><span class="n">group</span><span class="p">);</span>
+
+<span class="cm">/* 修改文件大小</span>
+<span class="cm">length：指定的文件大小</span>
+<span class="cm">return：</span>
+<span class="cm">    成功：0</span>
+<span class="cm">    失败：-1 */</span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">truncate</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">path</span><span class="p">,</span><span class="w"> </span><span class="kt">off_t</span><span class="w"> </span><span class="n">length</span><span class="p">);</span>
+</code></pre></div>
+<h4 id="_7">目录函数<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
+<div class="highlight"><span class="filename">C++</span><pre><span></span><code><span class="cm">/* 创建目录</span>
+<span class="cm">pathname：目录地址</span>
+<span class="cm">mode：权限，八进制数</span>
+<span class="cm">return：</span>
+<span class="cm">    成功：0</span>
+<span class="cm">    失败：-1 */</span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">mkdir</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">pathname</span><span class="p">,</span><span class="w"> </span><span class="kt">mode_t</span><span class="w"> </span><span class="n">mode</span><span class="p">);</span>
+
+<span class="cm">/* 删除目录</span>
+<span class="cm">return：</span>
+<span class="cm">    成功：0</span>
+<span class="cm">    失败：-1 */</span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">rmdir</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">pathname</span><span class="p">);</span>
+
+<span class="cm">/* 重命名目录</span>
+<span class="cm">oldpath：原目录名</span>
+<span class="cm">newpath：新目录名</span>
+<span class="cm">return：</span>
+<span class="cm">    成功：0</span>
+<span class="cm">    失败：-1 */</span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">rename</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">oldpath</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">newpath</span><span class="p">);</span>
+
+<span class="cm">/* 更改当前进程的目录</span>
+<span class="cm">path：需要更改的目录地址</span>
+<span class="cm">return：</span>
+<span class="cm">    成功：0</span>
+<span class="cm">    失败：-1 */</span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">chdir</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">path</span><span class="p">);</span>
+
+<span class="cm">/* 获取当前路径</span>
+<span class="cm">buf：传出参数，存放目录的缓冲区</span>
+<span class="cm">size：buf的大小</span>
+<span class="cm">return：buf */</span>
+<span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="nf">getcwd</span><span class="p">(</span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">buf</span><span class="p">,</span><span class="w"> </span><span class="kt">size_t</span><span class="w"> </span><span class="n">size</span><span class="p">);</span>
+
+<span class="cm">/* 打开目录</span>
+<span class="cm">name：目录名</span>
+<span class="cm">return：</span>
+<span class="cm">    成功：返回目录流，DIR* 类型</span>
+<span class="cm">    失败：NULL */</span>
+<span class="kt">DIR</span><span class="o">*</span><span class="w"> </span><span class="nf">opendir</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">name</span><span class="p">);</span>
+
+<span class="cm">/* 读取目录</span>
+<span class="cm">dirp：opendir的返回值</span>
+<span class="cm">return：</span>
+<span class="cm">    读取到的文件信息，struct dirent类型</span>
+<span class="cm">    读取到末尾 / 失败：NULL */</span>
+<span class="k">struct</span><span class="w"> </span><span class="nc">dirent</span><span class="o">*</span><span class="w"> </span><span class="n">readdir</span><span class="p">(</span><span class="kt">DIR</span><span class="o">*</span><span class="w"> </span><span class="n">dirp</span><span class="p">);</span>
+
+<span class="cm">/* 关闭目录</span>
+<span class="cm">dirp：opendir的返回值</span>
+<span class="cm">return：</span>
+<span class="cm">    成功：0</span>
+<span class="cm">    失败：-1 */</span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">closedir</span><span class="p">(</span><span class="kt">DIR</span><span class="o">*</span><span class="w"> </span><span class="n">dirp</span><span class="p">);</span>
+</code></pre></div>
+<h4 id="_8">文件描述符函数<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
+<div class="highlight"><span class="filename">C++</span><pre><span></span><code><span class="cm">/* 创建文件描述符，指向oldfd</span>
+<span class="cm">return：新的文件描述符 */</span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">dup</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">oldfd</span><span class="p">);</span>
+
+<span class="cm">/* 重定向newfd，关闭newfd，指向oldfd</span>
+<span class="cm">return: newfd */</span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">dup2</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">oldfd</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">newfd</span><span class="p">);</span>
+
+<span class="cm">/* 操作文件描述符</span>
+<span class="cm">cmd：</span>
+<span class="cm">    F_DUPFD: 复制文件描述符，返回新的文件描述符</span>
+<span class="cm">    F_GETFL：获取文件状态 flag</span>
+<span class="cm">    F_SETFL：设置文件状态</span>
+<span class="cm">        必选项：O_RDONLY、O_WRONLY、O_RDWR</span>
+<span class="cm">        可选项：O_APPEND（追加数据）、NONBLOCK（非阻塞）*/</span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">fcntl</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">fd</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">cmd</span><span class="p">,</span><span class="w"> </span><span class="p">...);</span>
+</code></pre></div>
+<h4 id="_9">其他函数<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h4>
+<div class="highlight"><span class="filename">C++</span><pre><span></span><code><span class="cm">/* 将内存块的前 n 个字节清零</span>
+<span class="cm">- s 内存块地址</span>
+<span class="cm">- n 清零的字节数 */</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">bzero</span><span class="p">(</span><span class="kt">void</span><span class="o">*</span><span class="w"> </span><span class="n">s</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="p">);</span>
+
+<span class="cm">/* 对内存块进行填充</span>
+<span class="cm">- str 内存块地址</span>
+<span class="cm">- c 填充的值</span>
+<span class="cm">- n 填充的个数</span>
+<span class="cm">- return 内存块地址 str</span>
+<span class="cm">memset 赋值时是按字节赋值</span>
+<span class="cm">若 str 为 int 型，c 只能为 0 或 -1  */</span>
+<span class="kt">void</span><span class="o">*</span><span class="w"> </span><span class="nf">memset</span><span class="p">(</span><span class="kt">void</span><span class="o">*</span><span class="w"> </span><span class="n">str</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">c</span><span class="p">,</span><span class="w"> </span><span class="kt">size_t</span><span class="w"> </span><span class="n">n</span><span class="p">);</span>
+
+<span class="cm">/* 内存拷贝：将 src 的 前 n 个字节拷贝到 dest</span>
+<span class="cm">- dest 目的内存</span>
+<span class="cm">- src 源内存</span>
+<span class="cm">- n 拷贝的字节数</span>
+<span class="cm">- return dest */</span>
+<span class="kt">void</span><span class="o">*</span><span class="w"> </span><span class="nf">memcpy</span><span class="p">(</span><span class="kt">void</span><span class="o">*</span><span class="w"> </span><span class="n">dest</span><span class="p">,</span><span class="w"> </span><span class="kt">void</span><span class="o">*</span><span class="w"> </span><span class="n">src</span><span class="p">,</span><span class="w"> </span><span class="kt">size_t</span><span class="w"> </span><span class="n">n</span><span class="p">);</span>
+
+<span class="c1">// 若条件 expression 返回错误，终止进程</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">assert</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">expression</span><span class="p">);</span>
+</code></pre></div>
+<h3 id="shell">Shell命令<a class="headerlink" href="#shell" title="Permanent link">&para;</a></h3>
+<div class="highlight"><span class="filename">Bash</span><pre><span></span><code><span class="m">1</span>.<span class="w"> </span><span class="nb">cd</span>
+<span class="m">2</span>.<span class="w"> </span>ls<span class="w"> </span>-a<span class="w"> </span>/<span class="w"> </span>-l
+<span class="m">2</span>.<span class="w"> </span>mkdir
+<span class="m">3</span>.<span class="w"> </span>touch
+<span class="m">4</span>.<span class="w"> </span><span class="nb">pwd</span>
+<span class="m">5</span>.<span class="w"> </span><span class="nb">kill</span>
+<span class="m">6</span>.<span class="w"> </span>chmod
+<span class="m">7</span>.<span class="w"> </span>rm<span class="w"> </span>-f<span class="w"> </span>Filename
+<span class="m">8</span>.<span class="w"> </span>rm<span class="w"> </span>-rf<span class="w"> </span>Dirname
+<span class="m">9</span>.<span class="w"> </span>zip<span class="w"> </span>-r<span class="w"> </span>Filename.zip<span class="w"> </span>Dirname
+<span class="m">10</span>.<span class="w"> </span>unzip<span class="w"> </span>Filename.zip
+<span class="m">11</span>.<span class="w"> </span>cp<span class="w"> </span>-i<span class="w"> </span>Filename<span class="w"> </span>Dirroot
+</code></pre></div>
+<h2 id="2">2. 多进程<a class="headerlink" href="#2" title="Permanent link">&para;</a></h2>
+<h3 id="_10">进程<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h3>
+<p>进程是正在运行的程序的实例，是资源分配的基本单元，是执行的基本单元</p>
+<ul>
+<li>并行：多条指令同时执行</li>
+<li>并发：同一时刻只有一条指令执行，多条指令轮换执行，在宏观上达到并行的效果</li>
+</ul>
+<h3 id="pcb">PCB进程控制块<a class="headerlink" href="#pcb" title="Permanent link">&para;</a></h3>
+<ol>
+<li>进程id</li>
+<li>进程状态：阻塞、就绪、运行、挂起</li>
+<li>进程上下文切换需要保存和恢复的CPU寄存器</li>
+<li>虚拟地址空间</li>
+<li>控制终端</li>
+<li>工作目录</li>
+<li>umask掩码</li>
+<li>文件描述符表</li>
+<li>信号</li>
+<li>用户id、组id</li>
+<li>会话、进程组</li>
+</ol>
+<h3 id="_11">进程状态<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h3>
+<h4 id="_12">三态模型<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h4>
+<p><img alt="三态模型" src="../assets/webserver/7-%E8%BF%9B%E7%A8%8B%E4%B8%89%E4%B8%AA%E5%9F%BA%E6%9C%AC%E7%8A%B6%E6%80%81-1163923.jpg" /></p>
+<p>运行态：正在占有CPU
+就绪态：具备运行条件，进程已获得除CPU以外的资源
+阻塞态：不具备运行条件，正在等待某个事件的完成</p>
+<h4 id="_13">五态模型<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h4>
+<p><img alt="五态模型" src="../assets/webserver/8-%E8%BF%9B%E7%A8%8B%E4%BA%94%E4%B8%AA%E7%8A%B6%E6%80%81.jpg.webp" /></p>
+<p>新建态：进程被创建，未进入就绪队列
+终止态：进程运行结束或出错</p>
+<h4 id="_14">七态模型<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h4>
+<p><img alt="七态模型" src="../assets/webserver/10-%E8%BF%9B%E7%A8%8B%E4%B8%83%E4%B8%AD%E7%8A%B6%E6%80%81.jpg.webp" /></p>
+<p>挂起态：进程没有实际占用物理内存空间</p>
+<p>阻塞挂起状态：进程在外存（硬盘）并等待某个事件的出现；
+就绪挂起状态：进程在外存（硬盘），但只要进入内存，即刻立刻运行；</p>
+<p>进程挂起的原因：
+- 用户主动挂起 ctrl+Z
+- 父进程需要
+- 操作系统需要
+- 负荷调节需要</p>
+<h3 id="_15">进程命令<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h3>
+<div class="highlight"><span class="filename">Bash</span><pre><span></span><code><span class="c1"># 查看进程的快照</span>
+ps<span class="w"> </span>aux<span class="w"> </span>/<span class="w"> </span>ajx
+
+<span class="c1"># 动态显示系统资源情况</span>
+top
+
+<span class="c1"># 杀死进程</span>
+<span class="nb">kill</span><span class="w"> </span><span class="o">[</span>-signal<span class="o">]</span><span class="w"> </span>pid
+
+<span class="nb">kill</span><span class="w"> </span>-1<span class="w"> </span><span class="c1"># 列出所有信号</span>
+<span class="nb">kill</span><span class="w"> </span>-SIGKILL<span class="w"> </span>pid
+<span class="nb">kill</span><span class="w"> </span>-9<span class="w"> </span>pid<span class="w"> </span><span class="c1"># 强制杀死进程</span>
+killall<span class="w"> </span>name
+</code></pre></div>
+<h3 id="pid">PID<a class="headerlink" href="#pid" title="Permanent link">&para;</a></h3>
+<p>进程号 PID，类型为 pid_t（整型）</p>
+<p>任何进程（init进程除外）都由父进程创建，对应父进程号 PPID</p>
+<p>进程组是多个进程的集合，进程组可以接收同一终端的信号，有一个进程组号 PGID，默认当前的进程号为当前的进程组号</p>
+<div class="highlight"><span class="filename">C++</span><pre><span></span><code><span class="c1">// 获取进程id</span>
+<span class="kt">pid_t</span><span class="w"> </span><span class="nf">getpid</span><span class="p">();</span>
+
+<span class="c1">// 获取父进程id</span>
+<span class="kt">pid_t</span><span class="w"> </span><span class="n">getppid</span><span class="p">()</span><span class="err">；</span>
+
+<span class="c1">// 获取进程组id</span>
+<span class="kt">pid_t</span><span class="w"> </span><span class="n">getpgid</span><span class="p">(</span><span class="kt">pid_t</span><span class="w"> </span><span class="n">pid</span><span class="p">)</span><span class="err">；</span>
+</code></pre></div>
+<h3 id="_16">进程创建<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h3>
+<div class="highlight"><span class="filename">C++</span><pre><span></span><code><span class="c1">// 创建子进程</span>
+<span class="kt">pid_t</span><span class="w"> </span><span class="nf">fork</span><span class="p">(</span><span class="kt">void</span><span class="p">);</span>
+<span class="c1">// 成功：父进程返回子进程PID，子进程返回0</span>
+<span class="c1">// 失败：父进程返回-1(进程数达到上限 / 系统内存不足)</span>
+</code></pre></div>
+<p>fork() 后，会copy父进程的地址空间作为子进程的地址空间，两者的用户态相同，内核态相同（PID不同）</p>
+<p>Linux 的 fork() 使用写时拷贝（copy-on-write）技术：创建时，并不会复制整个地址空间，而是让父子进程共享同一个地址空间，以只读的方式进行共享，只有需要写入时才会进行复制。</p>
+<p>父子进程共享文件：
+fork() 后，父子进程具有相同的文件描述符表，引用计数增加，共享文件偏移指针</p>
+<p><strong>父子进程的关系</strong></p>
+<ul>
+<li>
+<p>不同：</p>
+<ul>
+<li>fork() 返回值不同</li>
+<li>PCB 中的 PID、PPID、信号集</li>
+</ul>
+</li>
+<li>
+<p>相同：
+    <strong>子进程被创建，还未进行写操作时</strong></p>
+<ul>
+<li>用户区的数据</li>
+<li>文件描述符表</li>
+</ul>
+</li>
+</ul>
+<p><strong>exec函数族</strong></p>
+<p>exec函数：在调用进程内部执行一个可执行文件
+一般在子进程中使用 exec 函数，将子进程的用户区替换为调用程序的用户区</p>
+<p>exec() 函数调用成功后，不会返回。因为调用进程的用户区已被新的内容所取代。调用失败则返回-1.</p>
+<div class="highlight"><span class="filename">C++</span><pre><span></span><code><span class="n">execl</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">path</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">arg</span><span class="p">,</span><span class="w"> </span><span class="p">...);</span>
+<span class="cm">/* path: 可执行文件的路径</span>
+<span class="cm">arg：可执行文件的参数列表</span>
+<span class="cm">    第一个参数默认为程序的名称（无作用）</span>
+<span class="cm">    其余为可执行程序所需的参数</span>
+<span class="cm">    参数以 NULL 结尾</span>
+<span class="cm">return：失败返回 -1，成功无返回值</span>
+</code></pre></div>
+<h3 id="_17">进程退出<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h3>
+<div class="highlight"><span class="filename">C++</span><pre><span></span><code><span class="c1">// 标准C库函数</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">exit</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">status</span><span class="p">);</span>
+
+<span class="c1">// Liunx系统函数</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">_exit</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">status</span><span class="p">);</span>
+</code></pre></div>
+<h4 id="_18">孤儿进程<a class="headerlink" href="#_18" title="Permanent link">&para;</a></h4>
+<p>父进程运行结束，子进程还在运行，则子进程为<strong>孤儿进程</strong></p>
+<p>由于子进程结束时，父进程需回收资源。因此，当出现孤儿进程时，内核会将孤儿进程的父进程设置为 init 进程（PID = 1），而 init 进程会对其子进程循环地调用 <code>wait()</code>，进行资源回收。因此孤儿进程不会产生危害</p>
+<h4 id="_19">僵尸进程<a class="headerlink" href="#_19" title="Permanent link">&para;</a></h4>
+<p>每个进程结束后，会释放用户区的数据，内核区中的 PCB 则需要父进程回收释放</p>
+<p>进程结束后，父进程尚未回收资源，子进程的残留资源存放于内核中，则子进程为<strong>僵尸进程</strong></p>
+<p>僵尸进程不能被 kill -9 杀死</p>
+<p>如果父进程未调用 wait()、waitpid()，则子进程的资源不会释放，其进程号被占用。由于系统的进程号有限，若存在大量的僵尸进程，会导致没有可用的进程号无法创建进程的情况发生。</p>
+<h3 id="_20">进程回收<a class="headerlink" href="#_20" title="Permanent link">&para;</a></h3>
+<p>进程退出时，内核会回收资源，但 PCB 信息仍需父进程进行回收</p>
+<p>父进程通过调用 wait()、waitpid() 得到子进程的退出状态并清理</p>
+<div class="highlight"><span class="filename">C++</span><pre><span></span><code><span class="c1">// wstatus: 传出参数，用于写入子进程退出时的状态信息</span>
+<span class="c1">// return: 成功返回子进程的pid，失败返回-1</span>
+<span class="kt">pid_t</span><span class="w"> </span><span class="nf">wait</span><span class="p">(</span><span class="kt">int</span><span class="o">*</span><span class="w"> </span><span class="n">wstatus</span><span class="p">);</span>
+
+<span class="cm">/* pid:</span>
+<span class="cm">    &gt; 0: 子进程的pid</span>
+<span class="cm">    = 0: 回收当前进程组的所有子进程</span>
+<span class="cm">    = -1: 回收所有的子进程，相当于wait()</span>
+<span class="cm">    &lt; -1: 某个进程组的组id的绝对值，回收该进程组的子进程</span>
+<span class="cm">options: 0（阻塞）、WNOHANG（非阻塞）</span>
+<span class="cm">return:</span>
+<span class="cm">    &gt; 0: 成功，子进程的pid</span>
+<span class="cm">    = 0: 非阻塞情况下，子进程未回收</span>
+<span class="cm">    &lt; 0: 失败 */</span>
+<span class="kt">pid_t</span><span class="w"> </span><span class="nf">waitpid</span><span class="p">(</span><span class="kt">pid_t</span><span class="w"> </span><span class="n">pid</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="o">*</span><span class="w"> </span><span class="n">wstatus</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">options</span><span class="p">);</span>
+</code></pre></div>
+<ul>
+<li>wait：默认阻塞，直到子进程退出或收到信号</li>
+<li>waitpid：默认阻塞，可设置非阻塞，可指定子进程的pid</li>
+<li>两者一次只能清理一个子进程</li>
+</ul>
+<h3 id="ipc">进程间通信（IPC）<a class="headerlink" href="#ipc" title="Permanent link">&para;</a></h3>
+<p><strong>目的</strong></p>
+<ul>
+<li>数据传输</li>
+<li>通知事件：进程终止通知父进程</li>
+<li>资源共享：内核需提供同步、互斥机制</li>
+<li>进程控制：Debug进程</li>
+</ul>
+<p><strong>方式</strong></p>
+<p>同一主机
+* 匿名管道
+* 命名管道
+* 信号
+* 消息队列
+* 共享内存
+* 内存映射
+* 信号量</p>
+<p>不同主机
+* Socket</p>
+<h4 id="_21">匿名管道<a class="headerlink" href="#_21" title="Permanent link">&para;</a></h4>
+<p>管道本质是内核在内存中的维护的缓冲区，管道具有文件的属性：读、写，但匿名管道没有文件实体，可以按照操作文件的方式来操作管道。</p>
+<p>管道中的数据为子节流，数据的传输方向为单向，一端写入一端读取。</p>
+<p>匿名管道只能在具有公共祖先的进程间使用（父子进程、兄弟进程）。</p>
+<p>管道的内部数据结构为循环队列</p>
+<p>管道默认阻塞：若管道内无数据，<code>read()</code>阻塞；若管道已满，<code>write()</code>阻塞。可通过 <code>fcntl()</code> 函数将管道设置为非阻塞</p>
+<div class="highlight"><span class="filename">C++</span><pre><span></span><code><span class="cm">/* 创建管道</span>
+<span class="cm">pipefd: 传出参数，pipefd[0]读端，pipefd[1]写端</span>
+<span class="cm">return：成功返回0，失败返回-1 */</span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">pipe</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">pipefd</span><span class="p">[</span><span class="mi">2</span><span class="p">]);</span>
+</code></pre></div>
+<p><strong>管道读写特点</strong></p>
+<p>读管道：
+- 管道中有数据，read返回实际读到的字节数。
+- 管道中无数据：
+    - 写端被全部关闭，read返回0（相当于读到文件的末尾）
+    - 写端没有完全关闭，read阻塞等待</p>
+<p>写管道：
+- 管道读端全部被关闭，进程异常终止（进程收到SIGPIPE信号）
+- 管道读端没有全部关闭：
+    - 管道已满，write阻塞
+    - 管道没有满，write将数据写入，并返回实际写入的字节数</p>
+<h4 id="fifo">有名管道（FIFO）<a class="headerlink" href="#fifo" title="Permanent link">&para;</a></h4>
+<p>不同于匿名管道，有名管道具有文件实体，以 FIFO 文件形式存放文件系统。即使与 FIFO 的创建进程不具有亲缘关系的进程也可以通过访问路径，进行进程间的通信。</p>
+<p><strong>特点</strong>
+* FIFO 是文件系统中的一个特殊文件，没有文件内容，其内容保存在内存中
+* 当进程间通信结束，FIFO 文件仍然保存在文件系统
+* FIFO 有名字，不相关的进程可以进行通信</p>
+<p><strong>FIFO 的创建</strong>
+<div class="highlight"><span class="filename">C++</span><pre><span></span><code><span class="c1">// 命令</span>
+<span class="n">mkfifo</span><span class="w"> </span><span class="n">名字</span>
+
+<span class="c1">// 函数</span>
+<span class="cm">/* mode：文件权限，八进制数</span>
+<span class="cm">return：成功返回0，失败返回-1 */</span>
+<span class="kt">int</span><span class="w"> </span><span class="n">mkfifo</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">pathname</span><span class="p">,</span><span class="w"> </span><span class="kt">mode_t</span><span class="w"> </span><span class="n">mode</span><span class="p">);</span>
+</code></pre></div></p>
+<p>FIFO 严格遵循先进先出原则，因此不支持 <code>lseek()</code> 文件定位操作</p>
+<p><strong>有名管道的注意事项</strong>
+1. 一个为只读而打开一个管道的进程会阻塞，直到另外一个进程为只写打开管道
+2. 一个为只写而打开一个管道的进程会阻塞，直到另外一个进程为只读打开管道</p>
+<p>读管道：
+- 管道中有数据，read返回实际读到的字节数
+- 管道中无数据：
+    - 管道写端被全部关闭，read返回0，（相当于读到文件末尾）
+    - 写端没有全部被关闭，read阻塞等待</p>
+<p>写管道：
+- 管道读端被全部关闭，进行异常终止（收到一个SIGPIPE信号）
+- 管道读端没有全部关闭：
+    - 管道已经满了，write会阻塞
+    - 管道没有满，write将数据写入，并返回实际写入的字节数。</p>
+<h4 id="_22">内存映射<a class="headerlink" href="#_22" title="Permanent link">&para;</a></h4>
+<p>内存映射：将磁盘文件的数据映射到内存，用户通过修改内存就能修改磁盘文件</p>
+<div class="highlight"><span class="filename">C++</span><pre><span></span><code><span class="cm">/* 内存映射：将文件的数据映射到内存中</span>
+<span class="cm">addr：映射内存的首地址，当 addr 为 NULL 时，由内核制定</span>
+<span class="cm">lenght：映射数据的长度，不能为0，建议使用文件的长度</span>
+<span class="cm">prot：申请的内存映射区的操作权限</span>
+<span class="cm">    PROT_EXEC：可执行</span>
+<span class="cm">    PROT_READ：可读</span>
+<span class="cm">    PROT_WRITE：可写</span>
+<span class="cm">    PROT_NONE：没有权限</span>
+<span class="cm">flags：同步状态的设置</span>
+<span class="cm">    MAP_SHARED：映射区的数据会自动和文件同步</span>
+<span class="cm">    MAP_PRIVATE：不同步，映射区的数据改变时，原文件不更改，会创建一个新文件</span>
+<span class="cm">fd：映射文件的文件描述符</span>
+<span class="cm">offset：偏移量，必须为4k的整数倍 </span>
+<span class="cm">return：</span>
+<span class="cm">    成功：映射内存的首地址</span>
+<span class="cm">    失败：MAP_FAILED (void*) -1 */</span>
+<span class="kt">void</span><span class="o">*</span><span class="w"> </span><span class="nf">mmap</span><span class="p">(</span><span class="kt">void</span><span class="o">*</span><span class="w"> </span><span class="n">addr</span><span class="p">,</span><span class="w"> </span><span class="kt">size_t</span><span class="w"> </span><span class="n">lenght</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">prot</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">flags</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">fd</span><span class="p">,</span><span class="w"> </span><span class="kt">off_t</span><span class="w"> </span><span class="n">offset</span><span class="p">);</span>
+
+<span class="cm">/* 释放内存映射</span>
+<span class="cm">addr：释放内存的首地址</span>
+<span class="cm">lenght：释放内存映射的大小 */</span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">munmap</span><span class="p">(</span><span class="kt">void</span><span class="o">*</span><span class="w"> </span><span class="n">addr</span><span class="p">,</span><span class="w"> </span><span class="kt">size_t</span><span class="w"> </span><span class="n">lenght</span><span class="p">);</span>
+</code></pre></div>
+<p>使用内存映射实现进程间通信：</p>
+<p>1.有关系的进程（父子进程）
+- 还没有子进程的时候
+    - 通过唯一的父进程，先创建内存映射区
+- 有了内存映射区以后，创建子进程
+- 父子进程共享创建的内存映射区</p>
+<p>2.没有关系的进程间通信
+- 准备一个大小不是0的磁盘文件
+- 进程1 通过磁盘文件创建内存映射区
+    - 得到一个操作这块内存的指针
+- 进程2 通过磁盘文件创建内存映射区
+    - 得到一个操作这块内存的指针
+- 使用内存映射区通信</p>
+<p>注意：内存映射区通信，是<strong>非阻塞</strong>。</p>
+<p><strong>匿名映射</strong> ：不需要文件实体来进行内存映射</p>
+<p>mmap() 的参数 flags 设置为 MAP_ANONYMOUS，则 mmap() 忽略 fd，一般将 fd 设置为 -1</p>
+<h4 id="_23">信号<a class="headerlink" href="#_23" title="Permanent link">&para;</a></h4>
+<p>信号是事件发生时对进程的通知机制（软件中断），是一种异步通信的方式。</p>
+<div class="highlight"><span class="filename">C++</span><pre><span></span><code><span class="c1">// 查看系统信号列表，前31为常规信号，其余为实时信号</span>
+<span class="n">kill</span><span class="w"> </span><span class="o">-</span><span class="n">l</span>
+</code></pre></div>
+<p><strong>系统信号列表</strong></p>
+<ul>
+<li>2号 SIGINT ctrl + C 触发的信号，终止进程</li>
+<li>3号 SIGQUIT ctrl + \ 触发的信号，终止进程</li>
+<li>9号 SIGKILL 无条件终止进程</li>
+<li>11号 SIGSEGV 无效内存访问（段错误）</li>
+<li>13号 SIGPIPE 向没有读端的管道写数据</li>
+<li>17号 SIGCHILD 子进程结束，父进程会收到该信号</li>
+<li>18号 SIGCONT 若进程停止，则继续运行</li>
+<li>19号 SIGSTOP 停止进程</li>
+<li><strong>SIGKILL、SIGSTOP 不能被捕捉、阻塞、忽略</strong></li>
+</ul>
+<p><strong>信号的默认处理动作</strong>
+- Term 终止进程
+- Ign 忽略信号
+- Core 终止进程，并生成Core文件
+- Stop 暂停当前进程
+- Cont 继续执行当前被暂停的进程</p>
+<p><strong>信号发送函数</strong></p>
+<div class="highlight"><span class="filename">C++</span><pre><span></span><code><span class="cm">/* 给进程/进程组发送信号</span>
+<span class="cm">pid：</span>
+<span class="cm">    &gt;0: 进程的pid</span>
+<span class="cm">    0: 当前进程组</span>
+<span class="cm">    -1: 每一个有权限接受信号的进程</span>
+<span class="cm">    &lt;-1: 给pgid = - pid 的进程组</span>
+<span class="cm">sig：信号的宏值</span>
+<span class="cm">return：成功返回0，失败返回非0 */</span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">kill</span><span class="p">(</span><span class="kt">pid_t</span><span class="w"> </span><span class="n">pid</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">sig</span><span class="p">);</span>
+
+<span class="cm">/* 给当前进程发送信号</span>
+<span class="cm">return：成功返回0，失败返回非0 */</span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">raise</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">sig</span><span class="p">);</span>
+
+<span class="c1">// 发送SIGABRD给当前进程，杀死当前进程</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">abort</span><span class="p">(</span><span class="kt">void</span><span class="p">);</span>
+
+<span class="cm">/* 设置定时器。函数调用，开始倒计时，当倒计时为0的时候，函数会给当前的进程发送一个信号：SIGALARM</span>
+<span class="cm">seconds: 倒计时的时长，单位：秒。如果参数为0，定时器无效（不进行倒计时，不发信号)。取消一个定时器，通过alarm(0)</span>
+<span class="cm">return：</span>
+<span class="cm">    之前没有定时器，返回0</span>
+<span class="cm">    之前有定时器，返回之前的定时器剩余的时间</span>
+<span class="cm">SIGALARM ：默认终止当前的进程，每一个进程都有且只有唯一的一个定时器。 */</span>
+<span class="kt">unsigned</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">alarm</span><span class="p">(</span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">seconds</span><span class="p">);</span>
+
+<span class="cm">/* 设置定时器。精度微妙us，可实现周期性定时</span>
+<span class="cm">which : 定时器以什么时间计时</span>
+<span class="cm">    ITIMER_REAL: 真实时间，时间到达，发送 SIGALRM（常用）</span>
+<span class="cm">    ITIMER_VIRTUAL: 用户时间，时间到达，发送 SIGVTALRM</span>
+<span class="cm">    ITIMER_PROF: 以该进程在用户态和内核态下所消耗的时间来计算，时间到达，发送 SIGPROF</span>
+<span class="cm">new_value: 设置定时器时间的属性</span>
+<span class="cm">struct itimerval { // 定时器的结构体</span>
+<span class="cm">    struct timeval it_interval; // 每个阶段的时间，间隔时间</span>
+<span class="cm">    struct timeval it_value; // 延迟多长时间执行定时器</span>
+<span class="cm">};</span>
+<span class="cm">struct timeval { // 时间的结构体</span>
+<span class="cm">    time_t tv_sec; // 秒数     </span>
+<span class="cm">    suseconds_t tv_usec; // 微秒    </span>
+<span class="cm">};</span>
+<span class="cm">old_value ：记录上一次的定时的时间参数，一般不使用，指定NULL</span>
+<span class="cm">return：成功返回0，失败 -1 */</span>
+<span class="kt">int</span><span class="w"> </span><span class="n">setitimer</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">which</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">itimerval</span><span class="w"> </span><span class="o">*</span><span class="n">new_value</span><span class="p">,</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">itimerval</span><span class="w"> </span><span class="o">*</span><span class="n">old_value</span><span class="p">)</span><span class="err">；</span>
+</code></pre></div>
+<p><strong>信号捕捉函数</strong>
+<div class="highlight"><span class="filename">C++</span><pre><span></span><code><span class="cm">/*</span>
+<span class="cm">设置信号的捕捉行为</span>
+<span class="cm">- signum: 捕捉的信号</span>
+<span class="cm">- handler: 信号处理标志</span>
+<span class="cm">    - SIG_IGN：忽略信号</span>
+<span class="cm">    - SIG_DFL：使用信号默认的行为</span>
+<span class="cm">    - 回调函数：这个函数是内核调用，程序员只负责写，捕捉到信号后如何去处理信号。</span>
+<span class="cm">- 返回值：</span>
+<span class="cm">    - 成功，返回上一次注册的信号处理函数的地址。第一次调用返回NULL</span>
+<span class="cm">    - 失败，返回SIG_ERR，设置错误号</span>
+
+<span class="cm">回调函数：</span>
+<span class="cm">- 需要程序员实现，提前准备好的，函数的类型根据实际需求，看函数指针的定义</span>
+<span class="cm">- 不是程序员调用，而是当信号产生，由内核调用</span>
+<span class="cm">- 函数指针是实现回调的手段，函数实现之后，将函数名放到函数指针的位置就可以了。</span>
+
+<span class="cm">SIGKILL SIGSTOP不能被捕捉，不能被忽略。*/</span>
+<span class="kt">sighandler_t</span><span class="w"> </span><span class="nf">signal</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">signum</span><span class="p">,</span><span class="w"> </span><span class="kt">sighandler_t</span><span class="w"> </span><span class="n">handler</span><span class="p">);</span>
+
+<span class="cm">/* 检查或者改变信号的处理。信号捕捉</span>
+<span class="cm">- signum：需要捕捉的信号</span>
+<span class="cm">- act：捕捉到信号之后的处理动作</span>
+<span class="cm">- oldact：上一次对信号捕捉相关的设置，一般不使用，传递NULL</span>
+<span class="cm">- return：成功 0，失败 -1</span>
+
+<span class="cm">struct sigaction { </span>
+<span class="cm">    // 函数指针，指向的函数就是信号捕捉到之后的处理函数</span>
+<span class="cm">    void (*sa_handler)(int);</span>
+
+<span class="cm">    // 不常用</span>
+<span class="cm">    void (*sa_sigaction)(int, siginfo_t *, void *);</span>
+
+<span class="cm">    // 临时阻塞信号集，在信号捕捉函数执行过程中，临时阻塞某些信号。</span>
+<span class="cm">    sigset_t sa_mask;</span>
+
+<span class="cm">    // 使用哪一个信号处理对捕捉到的信号进行处理，0表示使用sa_handler, SA_SIGINFO表示使用sa_sigaction</span>
+<span class="cm">    int sa_flags;</span>
+
+<span class="cm">    // 已废弃</span>
+<span class="cm">    void (*sa_restorer)(void);</span>
+<span class="cm">}; */</span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">sigaction</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">signum</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">sigaction</span><span class="w"> </span><span class="o">*</span><span class="n">act</span><span class="p">,</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">sigaction</span><span class="w"> </span><span class="o">*</span><span class="n">oldact</span><span class="p">);</span>
+</code></pre></div></p>
+<p><strong>信号集</strong></p>
+<p>多个信号可使用信号集的数据结构来表示，sigset_t类型</p>
+<p>在PCB中有两个信号集：阻塞信号集、未决信号集，操作系统不允许用户直接对这两个信号集进行修改，需要自定义信号集，借助信号集操作函数来进行修改</p>
+<p><strong>信号集函数</strong></p>
+<div class="highlight"><span class="filename">C++</span><pre><span></span><code><span class="c1">// 清空信号集（将信号集所有标志设置为0），都为非阻塞</span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">sigemptyset</span><span class="p">(</span><span class="kt">sigset_t</span><span class="w"> </span><span class="o">*</span><span class="n">set</span><span class="p">);</span>
+
+<span class="c1">// 将信号集所有标志设置为1，都为阻塞</span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">sigfillset</span><span class="p">(</span><span class="kt">sigset_t</span><span class="w"> </span><span class="o">*</span><span class="n">set</span><span class="p">);</span>
+
+<span class="c1">//设置信号集中的某一个信号对应的标志位为1，表示阻塞这个信号</span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">sigaddset</span><span class="p">(</span><span class="kt">sigset_t</span><span class="w"> </span><span class="o">*</span><span class="n">set</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">signum</span><span class="p">);</span>
+
+<span class="c1">// 设置信号集中的某一个信号对应的标志位为0，表示不阻塞这个信号</span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">sigdelset</span><span class="p">(</span><span class="kt">sigset_t</span><span class="w"> </span><span class="o">*</span><span class="n">set</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">signum</span><span class="p">);</span>
+
+<span class="c1">// 判断某个信号是否阻塞</span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">sigismember</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">sigset_t</span><span class="w"> </span><span class="o">*</span><span class="n">set</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">signum</span><span class="p">);</span>
+
+<span class="cm">/* 将自定义信号集中的数据设置到内核中（设置阻塞，解除阻塞，替换）</span>
+<span class="cm">- how : 如何对内核阻塞信号集进行处理</span>
+<span class="cm">    - SIG_BLOCK: 将用户设置的阻塞信号集添加到内核中，内核中原来的数据不变 mask |= set </span>
+<span class="cm">    - SIG_UNBLOCK: 根据用户设置的数据，对内核中的数据进行解除阻塞 mask &amp;= ~set</span>
+<span class="cm">    - SIG_SETMASK:覆盖内核中原来的值</span>
+<span class="cm">set ：已经初始化好的用户自定义的信号集</span>
+<span class="cm">oldset : 保存设置之前的内核中的阻塞信号集的状态，可以是 NULL</span>
+<span class="cm">- return: 成功返回0，失败返回-1 */</span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">sigprocmask</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">how</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">sigset_t</span><span class="w"> </span><span class="o">*</span><span class="n">set</span><span class="p">,</span><span class="w"> </span><span class="kt">sigset_t</span><span class="w"> </span><span class="o">*</span><span class="n">oldset</span><span class="p">);</span>
+
+<span class="cm">/* 获取内核中的未决信号集</span>
+<span class="cm">- set,传出参数，保存的是内核中的未决信号集中的信息 */</span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">sigpending</span><span class="p">(</span><span class="kt">sigset_t</span><span class="w"> </span><span class="o">*</span><span class="n">set</span><span class="p">);</span>
+</code></pre></div>
+<p><strong>SIGCHLD信号</strong></p>
+<p>产生条件
+- 子进程终止时
+- 子进程接收到SIGSTOP信号停止时
+- 子进程处于停止态，接收到SIGCONT后唤醒时</p>
+<p>满足上述条件时，子进程会发送SIGCHLD信号给父进程，父进程默认忽略该信号</p>
+<p>使用 SIGCHLD 信号，可以解决僵尸进程问题</p>
+<h4 id="_24">共享内存<a class="headerlink" href="#_24" title="Permanent link">&para;</a></h4>
+<p>共享内存：允许多个进程共享物理内存的同一块区域。共享内存段位于进程用户空间，因此 IPC 无需内核介入。</p>
+<p>其他 IPC 机制需要发送进程将数据从用户态缓冲区复制到内核态缓冲区，接收进程将数据从内核态缓冲区复制到用户态缓冲区，共享内存由于不需要内核介入，是速度最快的 IPC。</p>
+<p><strong>步骤</strong></p>
+<ul>
+<li>创建一个新共享内存段 / 获取得一个既有共享内存段</li>
+<li>关联共享内存段</li>
+<li>分离共享内存段</li>
+<li>删除共享内存段</li>
+</ul>
+<p><strong>函数</strong></p>
+<div class="highlight"><span class="filename">C++</span><pre><span></span><code><span class="cm">/* 创建一个新共享内存段 / 获取一个已有的共享内存段</span>
+<span class="cm">- key IPC标识，16进制，非0值</span>
+<span class="cm">- size 共享内存大小</span>
+<span class="cm">- shmflg 属性设置</span>
+<span class="cm">    - 访问属性</span>
+<span class="cm">    - 附加属性</span>
+<span class="cm">        - IPC_CREATE 创建共享内存</span>
+<span class="cm">        - IPC_EXCL 判断共享内存是否存在</span>
+<span class="cm">- return</span>
+<span class="cm">    - 成功 共享内存的引用ID</span>
+<span class="cm">    - 失败 -1 */</span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">shmget</span><span class="p">(</span><span class="kt">key_t</span><span class="w"> </span><span class="n">key</span><span class="p">,</span><span class="w"> </span><span class="kt">size_t</span><span class="w"> </span><span class="n">size</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">shmflg</span><span class="p">);</span>
+
+<span class="cm">/* 将共享内存和当前进程进行关联</span>
+<span class="cm">- shmid 共享内存ID，由shmget返回值指定</span>
+<span class="cm">- shmaddr 共享内存的起始地址，由内核制定，应为 NULL</span>
+<span class="cm">- shmflg 对共享内存的操作</span>
+<span class="cm">    - 读 SHM_RDONLY</span>
+<span class="cm">    - 读写 0</span>
+<span class="cm">- return</span>
+<span class="cm">    - 成功 共享内存的起始地址</span>
+<span class="cm">    - 失败 (void*) -1 */</span>
+<span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="nf">shmat</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">shmid</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">shmaddr</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">shmflg</span><span class="p">);</span><span class="w"> </span>
+
+<span class="cm">/* 分离共享内存与进程的关联</span>
+<span class="cm">- shmaddr 共享内存的起始地址</span>
+<span class="cm">- return 成功0，失败-1 */</span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">shmdt</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">shmaddr</span><span class="p">);</span>
+
+<span class="cm">/* 设置共享内存</span>
+<span class="cm">- shmid 共享内存ID</span>
+<span class="cm">- cmd 操作</span>
+<span class="cm">    - IPC_STAT 获取共享内存的状态</span>
+<span class="cm">    - IPC_SET 设置共享内存的状态</span>
+<span class="cm">    - IPC_RMID 标记共享内存被销毁</span>
+<span class="cm">- buf 设置或者获取的共享内存的属性信息</span>
+<span class="cm">    - IPC_STAT buf存储数据</span>
+<span class="cm">    - IPC_SET buf中需要初始化数据，设置到内核中</span>
+<span class="cm">    - IPC_RMID 没有用，NULL</span>
+<span class="cm">- return 成功0 失败-1 */</span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">shmctl</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">shmid</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">cmd</span><span class="p">,</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">shmid_ds</span><span class="w"> </span><span class="o">*</span><span class="n">buf</span><span class="p">);</span>
+
+<span class="cm">/* 由指定的路径名、int值，生成一个共享内存的key</span>
+<span class="cm">- pathname 路径</span>
+<span class="cm">- proj_id 一般为‘a&#39;</span>
+<span class="cm">- return</span>
+<span class="cm">    - 成功 key</span>
+<span class="cm">    - 失败 -1 */</span>
+<span class="kt">key_t</span><span class="w"> </span><span class="nf">ftok</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">pathname</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">proj_id</span><span class="p">);</span>
+</code></pre></div>
+<p>问题1：操作系统如何知道一块共享内存被多少个进程关联？
+    - 共享内存维护了一个结构体struct shmid_ds 这个结构体中有一个成员 shm_nattch
+    - shm_nattach 记录了关联的进程个数</p>
+<p>问题2：可不可以对共享内存进行多次删除 shmctl
+    - 可以的
+    - 因为shmctl 标记删除共享内存，不是直接删除
+    - 什么时候真正删除呢?
+        当和共享内存关联的进程数为0的时候，就真正被删除
+    - 当共享内存的key为0的时候，表示共享内存被标记删除了
+        如果一个进程和共享内存取消关联，那么这个进程就不能继续操作这个共享内存。也不能进行关联。</p>
+<p><strong>共享内存和内存映射</strong>
+1.共享内存可以直接创建，内存映射需要磁盘文件（匿名映射除外）
+2.共享内存速度更高
+3.内存
+    - 共享内存：所有的进程操作的是同一块内存。
+    - 内存映射：每个进程在自己的虚拟地址空间中有一个独立的内存。
+4.数据安全
+    - 进程突然退出
+        - 共享内存还存在
+        - 内存映射区消失
+    - 运行进程的电脑死机，宕机了
+        数据存在在共享内存中，没有了
+        内存映射区的数据 ，由于磁盘文件中的数据还在，所以内存映射区的数据还存在。
+5.生命周期
+    - 内存映射区：进程退出，内存映射区销毁
+    - 共享内存：进程退出，共享内存还在，标记删除（所有的关联的进程数为0），或者关机。如果一个进程退出，会自动和共享内存进行取消关联。</p>
+<h3 id="_25">守护进程<a class="headerlink" href="#_25" title="Permanent link">&para;</a></h3>
+<p><strong>控制终端</strong></p>
+<p>用户通过终端登录系统后得到一个 shell 进程，这个终端成为 shell 进程的控制终端(Controlling Terminal)。
+进程中，控制终端是保存在 PCB 中的信息，而 fork() 会复制 PCB 中的信息，因此由 shell 进程启动的其它进程的控制终端也是这个终端。
+默认情况下，每个进程的标准输入、标准输出和标准错误输出都指向控制终端。</p>
+<p><strong>进程组 会话</strong></p>
+<p>进程组：一组相关进程的集合
+进程组首进程：创建进程组的进程，其进程 PID 为该进程组的 PGID，新进程会继承其父进程所属的进程组 PGID。
+进程组的生命周期：开始于首进程创建的时刻，结束于最后一个进程退出进程组的时刻</p>
+<p>会话：一组相关进程组的集合
+会话首进程：创建会话的进程，其进程 PID 会成为会话 SID，新进程会继承其父进程的会话 SID。
+会话中的所有进程共享单个控制终端，控制终端会在会话首进程首次打开一个终端设备时被建立，一个终端最多可能会成为一个会话的控制终端。</p>
+<p><strong>函数</strong></p>
+<div class="highlight"><span class="filename">C++</span><pre><span></span><code><span class="kt">pid_t</span><span class="w"> </span><span class="nf">getpgrp</span><span class="p">(</span><span class="kt">void</span><span class="p">);</span><span class="w"> </span><span class="c1">// 获取当前进程组</span>
+<span class="kt">pid_t</span><span class="w"> </span><span class="nf">getpgid</span><span class="p">(</span><span class="kt">pid_t</span><span class="w"> </span><span class="n">pid</span><span class="p">);</span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">setpgid</span><span class="p">(</span><span class="kt">pid_t</span><span class="w"> </span><span class="n">pid</span><span class="p">,</span><span class="w"> </span><span class="kt">pid_t</span><span class="w"> </span><span class="n">pgid</span><span class="p">);</span>
+<span class="kt">pid_t</span><span class="w"> </span><span class="nf">getsid</span><span class="p">(</span><span class="kt">pid_t</span><span class="w"> </span><span class="n">pid</span><span class="p">);</span>
+<span class="kt">pid_t</span><span class="w"> </span><span class="nf">setsid</span><span class="p">(</span><span class="kt">void</span><span class="p">);</span>
+</code></pre></div>
+<p><strong>守护进程</strong></p>
+<p>守护进程（Daemon 进程）：Linux中的后台服务进程，独立于控制终端并且周期性地执行某种任务或等待处理某些发生的事件</p>
+<p>守护进程特点：
+- 生命周期很长，守护进程会在系统启动的时候被创建并一直运行直至系统被关闭
+- 在后台运行并且不拥有控制终端。没有控制终端确保了内核永远不会为守护进程自动生成任何控制信号以及终端相关的信号</p>
+<p><strong>守护进程创建步骤</strong>
+1. 执行<code>fork()</code>，父进程退出，子进程继续执行
+2. 子进程调用 setsid() 开启一个新会话。
+3. 清除进程的 umask 以确保当守护进程创建文件和目录时拥有所需的权限。 
+4. 修改进程的当前工作目录，通常会改为根目录(/)。 
+5. 关闭守护进程从其父进程继承而来的所有打开着的文件描述符。 
+6. 在关闭了文件描述符0、1、2之后，守护进程通常会打开/dev/null 并使用dup2() 使所有这些描述符指向这个设备。
+7. 核心业务逻辑</p>
+<h2 id="3">3. 多线程<a class="headerlink" href="#3" title="Permanent link">&para;</a></h2>
+<h3 id="_26">线程<a class="headerlink" href="#_26" title="Permanent link">&para;</a></h3>
+<p>进程是 CPU 资源分配的最小单位，线程是操作系统调度执行的最小单位
+一个进程内可以包含多个线程，不同线程间独立运行，且共享同一份全局内存区域，包括 初始化数据段(.data)、未初始化数据段(.bss)、堆内存段。</p>
+<p><strong>线程间的共享资源</strong>
+- 进程 ID、父进程 ID
+- 进程组 ID、会话 ID
+- 用户 ID、用户组 ID
+- 文件描述符表
+- 信号处置
+- 文件系统相关信息：文件权限掩码(umask)、当前工作目录
+- 虚拟地址空间（除 栈空间）</p>
+<p><strong>非共享资源</strong>
+- 线程 ID
+- 信号掩码
+- 线程特有数据
+- error 变量
+- 实时调度策略的优先级
+- 栈空间、本地变量、函数的调用链接信息</p>
+<h3 id="_27">线程操作函数<a class="headerlink" href="#_27" title="Permanent link">&para;</a></h3>
+<p>main 函数所在的线程为 主线程，其余创建的线程为子线程
+线程 ID 为 pthread_t 类型</p>
+<div class="highlight"><span class="filename">C++</span><pre><span></span><code><span class="cm">/* 线程创建</span>
+<span class="cm">- thread 传出参数，子线程 ID</span>
+<span class="cm">- attr 子线程属性，默认为 NULL</span>
+<span class="cm">- start_routine 函数指针，子线程的工作函数（返回值和参数均为 void* 类型）</span>
+<span class="cm">- arg 工作函数的参数</span>
+<span class="cm">- return 成功返回0，失败返回错误号 */</span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">pthread_create</span><span class="p">(</span><span class="n">pthread_t</span><span class="w"> </span><span class="o">*</span><span class="kr">thread</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">pthread_attr_t</span><span class="w"> </span><span class="o">*</span><span class="n">attr</span><span class="p">,</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="p">(</span><span class="o">*</span><span class="n">start_routine</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="p">),</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">arg</span><span class="p">);</span>
+
+<span class="c1">// 获取当前线程的 ID</span>
+<span class="n">pthread_t</span><span class="w"> </span><span class="nf">pthread_self</span><span class="p">(</span><span class="kt">void</span><span class="p">);</span>
+
+<span class="cm">/* 比较两个线程的 ID 是否相等</span>
+<span class="cm">- return 相等返回非0值，不同返回0 */</span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">pthread_equal</span><span class="p">(</span><span class="n">pthread_t</span><span class="w"> </span><span class="n">t1</span><span class="p">,</span><span class="w"> </span><span class="n">pthread_t</span><span class="w"> </span><span class="n">t2</span><span class="p">);</span>
+
+<span class="cm">/* 线程退出，终止该线程</span>
+<span class="cm">- retval 传出参数，线程退出时的返回值，可用于 pthread_john 的参数，默认为 NULL */</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">pthread_exit</span><span class="p">(</span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">retval</span><span class="p">);</span>
+
+<span class="cm">/* 线程连接，回收已终止线程的资源，阻塞函数，调用一次只能回收一个子线程</span>
+<span class="cm">- thread 回收线程 ID</span>
+<span class="cm">- retval 二级指针，线程退出时的返回值</span>
+<span class="cm">- return 成功0，失败非0 */</span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">pthread_join</span><span class="p">(</span><span class="n">pthread_t</span><span class="w"> </span><span class="kr">thread</span><span class="p">,</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="o">**</span><span class="n">retval</span><span class="p">);</span>
+
+<span class="cm">/* 线程分离，被分离的线程在终止时，不需要进行资源回收，会自动释放资源给系统</span>
+<span class="cm">    - 不能对线程进行多次分离</span>
+<span class="cm">    - 不能通过 pthread_join 回收已分离的线程</span>
+<span class="cm">- thread 需要线程分离的 ID</span>
+<span class="cm">- return 成功0，失败返回错误号 */</span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">pthread_detach</span><span class="p">(</span><span class="n">pthread_t</span><span class="w"> </span><span class="kr">thread</span><span class="p">);</span>
+
+<span class="cm">/* 取消某个线程，即当该线程执行到某个取消点时，终止</span>
+<span class="cm">取消点：系统规定好的一些系统调用，可以粗略的理解为从用户区到内核区的切换</span>
+<span class="cm">- return 成功0，失败非0 */</span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">pthread_cancel</span><span class="p">(</span><span class="n">pthread_t</span><span class="w"> </span><span class="kr">thread</span><span class="p">);</span>
+</code></pre></div>
+<h3 id="_28">线程属性<a class="headerlink" href="#_28" title="Permanent link">&para;</a></h3>
+<p>类型：pthread_attr_t</p>
+<div class="highlight"><span class="filename">C++</span><pre><span></span><code><span class="c1">// 初始化线程属性</span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">pthread_attr_init</span><span class="p">(</span><span class="n">pthread_attr_t</span><span class="w"> </span><span class="o">*</span><span class="n">attr</span><span class="p">);</span>
+
+<span class="c1">// 释放线程属性</span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">pthread_attr_destroy</span><span class="p">(</span><span class="n">pthread_attr_t</span><span class="w"> </span><span class="o">*</span><span class="n">attr</span><span class="p">);</span>
+
+<span class="c1">// 获取线程分离的状态属性</span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">pthread_attr_getdetachstate</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">pthread_attr_t</span><span class="w"> </span><span class="o">*</span><span class="n">attr</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="n">detachstate</span><span class="p">);</span>
+
+<span class="c1">// 设置线程分离的状态属性</span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">pthread_attr_setdetachstate</span><span class="p">(</span><span class="n">pthread_attr_t</span><span class="w"> </span><span class="o">*</span><span class="n">attr</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">detachstate</span><span class="p">);</span>
+</code></pre></div>
+<h3 id="_29">线程同步<a class="headerlink" href="#_29" title="Permanent link">&para;</a></h3>
+<p>临界区：访问共享资源的代码段，应保证多个线程不会同时访问共享资源</p>
+<p>线程同步：同一时刻，只能有一个线程对共享资源进行操作，当其他线程对该共享资源操作时，应处于等待状态。</p>
+<h4 id="_30">互斥量（互斥锁）<a class="headerlink" href="#_30" title="Permanent link">&para;</a></h4>
+<p>通过互斥量的加锁、解锁状态，来保证对共享资源的原子访问</p>
+<p>当线程锁定互斥量时，即成为该互斥量的所有者，只有所有者才能给互斥量解锁。
+不能对已加锁的互斥量再次加锁，可能会阻塞该线程或报错。</p>
+<p>访问共享资源的步骤：
+1. 针对共享资源进行加锁
+2. 访问共享资源
+3. 解锁</p>
+<p>互斥量类型 <code>pthread_mutex_t</code></p>
+<p><strong>函数</strong></p>
+<div class="highlight"><span class="filename">C++</span><pre><span></span><code><span class="cm">/* 初始化互斥量</span>
+<span class="cm">- mutex 互斥量</span>
+<span class="cm">- attr 互斥量属性，默认为 NULL</span>
+<span class="cm">- restrict C语言修饰符，被修饰的指针不能由另外一个指针进行操作 */</span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">pthread_mutex_init</span><span class="p">(</span><span class="n">pthread_mutex_t</span><span class="w"> </span><span class="o">*</span><span class="kr">restrict</span><span class="w"> </span><span class="n">mutex</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">pthread_mutexattr_t</span><span class="w"> </span><span class="o">*</span><span class="kr">restrict</span><span class="w"> </span><span class="n">attr</span><span class="p">);</span>
+
+<span class="c1">// 释放互斥量</span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">pthread_mutex_destroy</span><span class="p">(</span><span class="n">pthread_mutex_t</span><span class="w"> </span><span class="o">*</span><span class="n">mutex</span><span class="p">);</span>
+
+<span class="c1">// 加锁（阻塞）</span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">pthread_mutex_lock</span><span class="p">(</span><span class="n">pthread_mutex_t</span><span class="w"> </span><span class="o">*</span><span class="n">mutex</span><span class="p">);</span>
+
+<span class="c1">// 尝试加锁（非阻塞）</span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">pthread_mutex_trylock</span><span class="p">(</span><span class="n">pthread_mutex_t</span><span class="w"> </span><span class="o">*</span><span class="n">mutex</span><span class="p">);</span>
+
+<span class="c1">// 解锁</span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">pthread_mutex_unlock</span><span class="p">(</span><span class="n">pthread_mutex_t</span><span class="w"> </span><span class="o">*</span><span class="n">mutex</span><span class="p">);</span>
+</code></pre></div>
+<h4 id="_31">死锁<a class="headerlink" href="#_31" title="Permanent link">&para;</a></h4>
+<p>死锁：多个线程在执行过程中，因争夺共享资源而造成的一个互相等待的现象</p>
+<p><strong>产生原因</strong>
+- 忘记解锁
+- 重复加锁
+- 多线程多锁，抢占锁资源</p>
+<p><strong>必要条件</strong>
+- 互斥
+- 请求与保持
+- 不可剥夺
+- 循环等待</p>
+<h4 id="_32">读写锁<a class="headerlink" href="#_32" title="Permanent link">&para;</a></h4>
+<p>读共享锁：允许多个线程读，不允许写
+写独占锁：只允许一个线程写，不允许读
+优先级：写 &gt; 读</p>
+<p>读写锁类型<code>pthread_rwlock_t</code></p>
+<p><strong>函数</strong></p>
+<div class="highlight"><span class="filename">C++</span><pre><span></span><code><span class="c1">// 初始化读写锁</span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">pthread_rwlock_init</span><span class="p">(</span><span class="n">pthread_rwlock_t</span><span class="w"> </span><span class="o">*</span><span class="kr">restrict</span><span class="w"> </span><span class="n">rwlock</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">pthread_rwlockattr_t</span><span class="w"> </span><span class="o">*</span><span class="kr">restrict</span><span class="w"> </span><span class="n">attr</span><span class="p">);</span>
+
+<span class="c1">// 释放读写锁</span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">pthread_rwlock_destroy</span><span class="p">(</span><span class="n">pthread_rwlock_t</span><span class="w"> </span><span class="o">*</span><span class="n">rwlock</span><span class="p">);</span>
+
+<span class="c1">// 加读锁</span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">pthread_rwlock_rdlock</span><span class="p">(</span><span class="n">pthread_rwlock_t</span><span class="w"> </span><span class="o">*</span><span class="n">rwlock</span><span class="p">);</span>
+
+<span class="c1">// 尝试加读锁</span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">pthread_rwlock_tryrdlock</span><span class="p">(</span><span class="n">pthread_rwlock_t</span><span class="w"> </span><span class="o">*</span><span class="n">rwlock</span><span class="p">);</span>
+
+<span class="c1">// 加写锁</span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">pthread_rwlock_wrlock</span><span class="p">(</span><span class="n">pthread_rwlock_t</span><span class="w"> </span><span class="o">*</span><span class="n">rwlock</span><span class="p">);</span>
+
+<span class="c1">// 尝试加写锁</span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">pthread_rwlock_trywrlock</span><span class="p">(</span><span class="n">pthread_rwlock_t</span><span class="w"> </span><span class="o">*</span><span class="n">rwlock</span><span class="p">);</span>
+
+<span class="c1">// 解锁</span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">pthread_rwlock_unlock</span><span class="p">(</span><span class="n">pthread_rwlock_t</span><span class="w"> </span><span class="o">*</span><span class="n">rwlock</span><span class="p">);</span>
+</code></pre></div>
+<h4 id="_33">生产者消费者模型<a class="headerlink" href="#_33" title="Permanent link">&para;</a></h4>
+<h4 id="_34">条件变量<a class="headerlink" href="#_34" title="Permanent link">&para;</a></h4>
+<p>条件变量类型<code>pthread_cond_t</code></p>
+<p><strong>函数</strong></p>
+<div class="highlight"><span class="filename">C++</span><pre><span></span><code><span class="cm">/* 初始化条件变量</span>
+<span class="cm">- cond 条件变量</span>
+<span class="cm">- attr 条件变量属性，默认为NULL */</span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">pthread_cond_init</span><span class="p">(</span><span class="n">pthread_cond_t</span><span class="w"> </span><span class="o">*</span><span class="kr">restrict</span><span class="w"> </span><span class="n">cond</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">pthread_condattr_t</span><span class="w"> </span><span class="o">*</span><span class="kr">restrict</span><span class="w"> </span><span class="n">attr</span><span class="p">);</span>
+
+<span class="c1">// 释放条件变量</span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">pthread_cond_destroy</span><span class="p">(</span><span class="n">pthread_cond_t</span><span class="w"> </span><span class="o">*</span><span class="n">cond</span><span class="p">);</span>
+
+<span class="cm">/* 等待，线程阻塞</span>
+<span class="cm">- mutex 互斥锁</span>
+<span class="cm">- 调用该函数后，先解锁，待满足条件后，再上锁 */</span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">pthread_cond_wait</span><span class="p">(</span><span class="n">pthread_cond_t</span><span class="w"> </span><span class="o">*</span><span class="kr">restrict</span><span class="w"> </span><span class="n">cond</span><span class="p">,</span><span class="w"> </span><span class="n">pthread_mutex_t</span><span class="w"> </span><span class="o">*</span><span class="kr">restrict</span><span class="w"> </span><span class="n">mutex</span><span class="p">);</span>
+
+<span class="c1">// 等待，可指定时间</span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">pthread_cond_timedwait</span><span class="p">(</span><span class="n">pthread_cond_t</span><span class="w"> </span><span class="o">*</span><span class="kr">restrict</span><span class="w"> </span><span class="n">cond</span><span class="p">,</span><span class="w"> </span><span class="n">pthread_mutex_t</span><span class="w"> </span><span class="o">*</span><span class="kr">restrict</span><span class="w"> </span><span class="n">mutex</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">timespec</span><span class="w"> </span><span class="o">*</span><span class="kr">restrict</span><span class="w"> </span><span class="n">abstime</span><span class="p">);</span>
+
+<span class="c1">// 唤醒一个或者多个等待的线程</span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">pthread_cond_signal</span><span class="p">(</span><span class="n">pthread_cond_t</span><span class="w"> </span><span class="o">*</span><span class="n">cond</span><span class="p">);</span>
+
+<span class="c1">// 唤醒所有的等待的线程</span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">pthread_cond_broadcast</span><span class="p">(</span><span class="n">pthread_cond_t</span><span class="w"> </span><span class="o">*</span><span class="n">cond</span><span class="p">);</span>
+</code></pre></div>
+<h4 id="_35">信号量<a class="headerlink" href="#_35" title="Permanent link">&para;</a></h4>
+<p>信号量类型<code>sem_t</code></p>
+<p><strong>函数</strong></p>
+<div class="highlight"><span class="filename">C++</span><pre><span></span><code><span class="cm">/* 初始化信号量</span>
+<span class="cm">- sem 信号量地址</span>
+<span class="cm">- pshared </span>
+<span class="cm">    - 0 线程间</span>
+<span class="cm">    - 非0 进程间</span>
+<span class="cm">- value 信号量的初始值 */</span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">sem_init</span><span class="p">(</span><span class="n">sem_t</span><span class="w"> </span><span class="o">*</span><span class="n">sem</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">pshared</span><span class="p">,</span><span class="w"> </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">value</span><span class="p">);</span>
+
+<span class="c1">// 释放信号量</span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">sem_destroy</span><span class="p">(</span><span class="n">sem_t</span><span class="w"> </span><span class="o">*</span><span class="n">sem</span><span class="p">);</span>
+
+<span class="c1">// 信号量加锁，信号量-1；若信号量为0，则阻塞</span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">sem_wait</span><span class="p">(</span><span class="n">sem_t</span><span class="w"> </span><span class="o">*</span><span class="n">sem</span><span class="p">);</span>
+
+<span class="c1">// 信号量尝试加锁，非阻塞</span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">sem_trywait</span><span class="p">(</span><span class="n">sem_t</span><span class="w"> </span><span class="o">*</span><span class="n">sem</span><span class="p">);</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">sem_timedwait</span><span class="p">(</span><span class="n">sem_t</span><span class="w"> </span><span class="o">*</span><span class="n">sem</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">timespec</span><span class="w"> </span><span class="o">*</span><span class="n">abs_timeout</span><span class="p">);</span>
+
+<span class="c1">// 信号量解锁，信号量+1</span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">sem_post</span><span class="p">(</span><span class="n">sem_t</span><span class="w"> </span><span class="o">*</span><span class="n">sem</span><span class="p">);</span>
+
+<span class="c1">// 获得信号量的值</span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">sem_getvalue</span><span class="p">(</span><span class="n">sem_t</span><span class="w"> </span><span class="o">*</span><span class="n">sem</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="n">sval</span><span class="p">);</span>
+</code></pre></div>
+<h2 id="4">4. 网络编程<a class="headerlink" href="#4" title="Permanent link">&para;</a></h2>
+<h3 id="_36">网络基础<a class="headerlink" href="#_36" title="Permanent link">&para;</a></h3>
+<h4 id="_37">端口<a class="headerlink" href="#_37" title="Permanent link">&para;</a></h4>
+<p><strong>常见端口号</strong>
+- 21 FTP 服务
+- 22 SSH 服务
+- 23 Telnet 服务
+- 25 SMTP 服务
+- 80 HTTP 服务
+- 443 HTTPS 服务</p>
+<h2 id="5-webserver">5. WebServer<a class="headerlink" href="#5-webserver" title="Permanent link">&para;</a></h2>
+<h3 id="_38">日志<a class="headerlink" href="#_38" title="Permanent link">&para;</a></h3>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      郭玉刚 CC-BY-4.0
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+    <a href="https://space.bilibili.com/384189219" target="_blank" rel="noopener" title="bilibili | Terry-gyg" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.7.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M488.6 104.1c16.7 18.1 24.4 39.7 23.3 65.7v202.4c-.4 26.4-9.2 48.1-26.5 65.1-17.2 17-39.1 25.9-65.5 26.7H92.02c-26.45-.8-48.21-9.8-65.28-27.2C9.682 419.4.767 396.5 0 368.2V169.8c.767-26 9.682-47.6 26.74-65.7C43.81 87.75 65.57 78.77 92.02 78h29.38L96.05 52.19c-5.75-5.73-8.63-13-8.63-21.79 0-8.8 2.88-16.06 8.63-21.797C101.8 2.868 109.1 0 117.9 0q13.2 0 21.9 8.603L213.1 78h88l74.5-69.397C381.7 2.868 389.2 0 398 0q13.2 0 21.9 8.603c5.7 5.737 8.6 12.997 8.6 21.797 0 8.79-2.9 16.06-8.6 21.79L394.6 78h29.3c26.4.77 48 9.75 64.7 26.1m-38.8 69.7c-.4-9.6-3.7-17.4-10.7-23.5-5.2-6.1-14-9.4-22.7-9.8H96.05c-9.59.4-17.45 3.7-23.58 9.8-6.14 6.1-9.4 13.9-9.78 23.5v194.4c0 9.2 3.26 17 9.78 23.5s14.38 9.8 23.58 9.8H416.4c9.2 0 17-3.3 23.3-9.8s9.7-14.3 10.1-23.5zm-264.3 42.7c6.3 6.3 9.7 14.1 10.1 23.2V273c-.4 9.2-3.7 16.9-9.8 23.2-6.2 6.3-14 9.5-23.6 9.5s-17.5-3.2-23.6-9.5-9.4-14-9.8-23.2v-33.3c.4-9.1 3.8-16.9 10.1-23.2s13.2-9.6 23.3-10c9.2.4 17 3.7 23.3 10m191.5 0c6.3 6.3 9.7 14.1 10.1 23.2V273c-.4 9.2-3.7 16.9-9.8 23.2s-14 9.5-23.6 9.5-17.4-3.2-23.6-9.5c-7-6.3-9.4-14-9.7-23.2v-33.3c.3-9.1 3.7-16.9 10-23.2s14.1-9.6 23.3-10c9.2.4 17 3.7 23.3 10"/></svg>
+    </a>
+  
+    
+    
+    
+    
+    <a href="https://github.com/yugang-guo" target="_blank" rel="noopener" title="GitHub | Terry" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.7.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8M97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.top", "navigation.indexes", "navigation.expand", "search.suggest", "search.highlight", "content.code.copy", "content.action.edit"], "search": "../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.83f73b43.min.js"></script>
+      
+        <script src="../../mkdocs/javascripts/katex.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/katex.min.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/contrib/auto-render.min.js"></script>
+      
+    
+  </body>
+</html>
